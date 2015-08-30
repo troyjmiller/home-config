@@ -52,42 +52,6 @@ repath
 
 alias path='echo -e ${PATH//:/\\n}'
 
-#---------------------------------- ssh ----------------------------------
-
-start_ssh_agent() {
-  SSHAGENT=/usr/bin/ssh-agent
-  SSHAGENTARGS="-s"
-  if [ -z "$SSH_AUTH_SOCK" -a -x "$SSHAGENT" ]; then
-    eval `$SSHAGENT $SSHAGENTARGS`
-    trap "kill $SSH_AGENT_PID" 0
-  fi
-}
-
-_ssh() {
-  local list=`perl -ne 'print "$1 " if /\s*Host\s+(\S+)/' ~/.ssh/config`
-  local typed=${COMP_WORDS[COMP_CWORD]}
-  COMPREPLY=( $(compgen -W "$list" -- $typed))
-}
-complete -F _ssh ssh
-
-# only enter a ssh password once, just enough to send the public key
-# and yeah, I only use RSA (http://security.stackexchange.com/a/51194/39787)
-pushsshkey() {
-  local id=$1
-  local host=$2
-  cat ~/.ssh/${id}_rsa.pub | ssh $host '( [ ! -d "$HOME/.ssh" ] && mkdir "$HOME/.ssh"; cat >> "$HOME/.ssh/authorized_keys2" )'
-}
-
-# changes the default ssh IdentityFile, expects no leading whitespace
-sshid() {
-  local id=$1
-  rm ~/.ssh/config.bak 2>/dev/null
-  perl -p -i.bak -e "s/^IdentityFile.*$/IdentityFile ~\/.ssh\/${id}_rsa/i" ~/.ssh/config
-  rm ~/.ssh/config.bak 2>/dev/null
-  start_ssh_agent
-  ssh-add ~/.ssh/${id}_rsa
-}
-
 #--------------------------- Utility Functions ----------------------------
 
 has() {
@@ -121,7 +85,9 @@ alias pytest='nosetests'
 alias pyinstall='sudo pip3 install --upgrade .'
 alias runallpy='for i in *.py;do python3 $i; done'
 alias jsonpp='json_pp'
+
 export PYTHONDONTWRITEBYTECODE=true
+export PYTHONPATH=$HOME/repos/python-1:$HOME/repos/python-2:$HOME/lib/python
 
 alias lx='ls -lXB'         #  Sort by extension.
 alias lk='ls -lSr'         #  Sort by size, biggest last.
@@ -133,53 +99,9 @@ alias lm='ll |more'        #  Pipe through 'more'
 alias lr='ll -R'           #  Recursive ls.
 alias la='ll -A'           #  Show hidden files.
 
-llastf() {
-  # recursively lists all files in reverse chronological order of
-  # when they were last modified
-  top=$1
-  [ "$1" = "" ] && top=.
-  find $top -type f -printf '%TY-%Tm-%Td %TT %p\n' |sort -r
-}
-
-llastd() {
-  # same but directories
-  top=$1
-  [ "$1" = "" ] && top=.
-  find $top -type d -printf '%TY-%Tm-%Td %TT %p\n' |sort -r
-}
-
-lall() {
-  find . -name "*$1*"
-}
-
-grepall() {
-  find . \( ! -regex '.*/\..*' \) -type f -exec grep "$1" {} /dev/null \;
-}
-
 # why perl versions that could do with bash param sub? bourne compat
 join() {
   perl -e '$d=shift; print(join($d,@ARGV))' "$@"
-}
-
-# no basename is not the same
-chompsuf() {
-  perl -e '@l=grep{s/\.[^\.]+$//}@ARGV;print"@l"' "$@"
-}
-
-resuf() {
-  _from=$1
-  _to=$2
-  shift 2
-  for _name in "$@"; do
-    case $_name in
-      *.$_from)
-        _new=`chompsuf $_name`.$_to
-        echo "$_name -> $_new"
-        mv $_name $_new
-        ;;
-    esac
-  done
-  unset _from _to _name _new
 }
 
 #-------------------------------- PowerGit --------------------------------
@@ -191,13 +113,6 @@ export GITURLS=\
 "$HOME/repos/private/giturls"
 alias gurlpath='echo -e ${GITURLS//:/\\n}'
 
-repo() {
-  if [ -z "$1" ]; then 
-    /bin/ls -1 "$HOME/repos"
-  else
-    cd "$HOME/repos/$1"
-  fi
-}
 alias gcd=repo
 alias repos='cd "$HOME/repos"'
 
@@ -206,22 +121,6 @@ gget() {
   git clone git@github.com:$1 $HOME/repos/$name
   repath
 }
-
-save() {
-  comment=save
-  [ ! -z "$*" ] && comment="$*"
-  git pull
-  git add -A .
-  git commit -a -m "$comment"
-  git push
-}
-
-_repo() {
-  local list=`repo`
-  local typed=${COMP_WORDS[COMP_CWORD]}
-  COMPREPLY=( $(compgen -W "$list" -- $typed))
-}
-complete -F _repo repo
 
 #------------------------------- Web Dev ----------------------------------
 
@@ -249,6 +148,7 @@ export SOL_blue='\033[0;34m'
 export SOL_cyan='\033[0;36m'
 export SOL_green='\033[0;32m'
 export SOL_reset='\033[0m'
+export SOL_clear='\\\033[H\\\033[2J'
 
 sol() {
   local color_var=\$"SOL_"$1
@@ -269,11 +169,12 @@ alias promptnone='export PS1="\[$SOL_cyan\]\\$ \[$SOL_reset\]"'
 promptmed
 
 alias listens='netstat -tulpn'
-alias ip="ifconfig | perl -ne '/^\s*inet addr/ and print'"
+alias ip="ifconfig | perl -ne '/^\s*inet (?:addr)?/ and print'"
 
 #-------------------------------- Vim-ish ---------------------------------
 
 set -o vi
+
 if [ "`which vim 2>/dev/null`" ]; then
   export EDITOR=vim
   alias vi=vim
@@ -285,8 +186,6 @@ textfiles() {
   local list=`find . -name "*$**" ! -path '*images*' ! -type d`
   echo $list
 }
-
-
 
 #---------------------------- personalization -----------------------------
 
@@ -301,5 +200,3 @@ export TERM=xterm-256color
 alias root='sudo su -'
 alias week="cd $HOME/repos/week"
  
-export PYTHONPATH=$HOME/repos/python-0:$HOME/repos/python-1:$HOME/repos/python-2:$HOME/lib/python
-export SOL_clear='\\\033[H\\\033[2J'

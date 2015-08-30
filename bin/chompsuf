@@ -1,0 +1,5 @@
+#!/bin/sh
+
+# no basename is not the same
+
+perl -e '@l=grep{s/\.[^\.]+$//}@ARGV;print"@l"' "$@"

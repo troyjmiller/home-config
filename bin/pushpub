@@ -1,4 +1,5 @@
 #!/bin/sh
+
 cat $HOME/.ssh/id_dsa.pub |\
     ssh "$1" "cat >> /tmp/$$pub; \
               mkdir -p .ssh;

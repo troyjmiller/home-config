@@ -1,0 +1,8 @@
+_note() {
+  local list=`note`
+  #echo $list
+  local typed=${COMP_WORDS[COMP_CWORD]}
+  COMPREPLY=( $(compgen -W "$list" -- $typed))
+}
+complete -F _note note
+alias todo='note todo'

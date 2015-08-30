@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# changes the default ssh IdentityFile, expects no leading whitespace
+
+local id=$1
+rm ~/.ssh/config.bak 2>/dev/null
+perl -p -i.bak -e "s/^IdentityFile.*$/IdentityFile ~\/.ssh\/${id}_rsa/i" ~/.ssh/config
+rm ~/.ssh/config.bak 2>/dev/null
+start_ssh_agent
+ssh-add ~/.ssh/${id}_rsa

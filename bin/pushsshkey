@@ -1,0 +1,8 @@
+#!/bin/bash
+
+# only enter a ssh password once, just enough to send the public key
+# and yeah, I only use RSA (http://security.stackexchange.com/a/51194/39787)
+
+local id=$1
+local host=$2
+cat ~/.ssh/${id}_rsa.pub | ssh $host '( [ ! -d "$HOME/.ssh" ] && mkdir "$HOME/.ssh"; cat >> "$HOME/.ssh/authorized_keys2" )'
