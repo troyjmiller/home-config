@@ -1,0 +1,135 @@
+syntax on
+filetype plugin on
+set nocompatible
+set modelines=0
+set spelllang=en_us
+set autoread
+set expandtab
+set tabstop=2
+set shiftwidth=2
+set shiftround
+set softtabstop=2
+set number
+"set rnu
+set encoding=utf-8
+set scrolloff=3
+set autoindent
+set nosmartindent
+set nocindent
+set autochdir
+set showmode
+set showcmd
+set hidden
+set wildmenu
+set wildmode=list:longest
+set visualbell
+set ttyfast
+set ruler
+set backspace=indent,eol,start
+set laststatus=2
+set hlsearch
+set ignorecase
+set smartcase
+set incsearch
+set showmatch
+set nowrap
+set textwidth=76
+set formatoptions=qrn1
+set nobackup
+set noswapfile
+
+" Keep in mind that if you have already solarized your gnome-terminal
+" you really don't need any of this
+
+set background=dark
+"let g:solarized_visibility="high"
+"let g:solarized_contrast="high"
+"let g:solarized_termcolors=16
+"let g:solarized_termtrans=1
+colorscheme solarized
+
+"set cursorline
+highlight  CursorLine cterm=NONE ctermbg=darkgrey ctermfg=None
+autocmd InsertEnter * highlight  CursorLine ctermbg=None ctermfg=None
+autocmd InsertLeave * highlight  CursorLine ctermbg=darkgrey ctermfg=None
+
+"set cursorcolumn
+"highlight  CursorColumn cterm=NONE ctermbg=darkgrey ctermfg=None
+
+" Fixes 'can't find specified path' errors (both work)
+" set shell=/bin/bash\ -i
+" set shell=bash
+set shellcmdflag=-ic
+
+" Reformat paragraphs wrapped to [default][]
+nnoremap fmt !}fmt<CR>
+nnoremap ucmt !}ucmt<CR>
+nnoremap cmt !}cmt<CR>
+nnoremap chomp !}chomp<CR>
+nnoremap cfmt !}cfmt<CR>
+"nnoremap bq !}bq<CR>
+nnoremap mm Bi[<ESC>Ea]()<ESC>i
+
+" Jump to last position in a given file
+if has("autocmd")
+    au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+endif
+
+" Remember global variables
+if !empty(&viminfo)
+  set viminfo^=!
+endif
+
+" i feel so dirty using this, learn cnt-[ if you haven't already
+inoremap kj <Esc>
+
+" FKEY mappings
+map <F1> :set number!<CR>
+map <F2> :set relativenumber!<CR>
+set pastetoggle=<F3>
+map <F4> :set list!<CR>
+map <F5> :set cursorline!<CR>
+map <F7> :set spell!<CR>
+
+" modula what?
+autocmd BufNewFile,BufRead *.md set filetype=markdown
+
+" json almost  == javascript
+autocmd BufNewFile,BufRead *.json set ft=json
+
+" crontab
+autocmd BufNewFile,BufRead *.crontab set ft=crontab
+
+if has("autocmd")
+  au FileType markdown,txt,html,jade set spell
+  au FileType yaml,javascript,html,json,jade,stylus setl tabstop=2 shiftwidth=2 softtabstop=2
+  au FileType go setl tabstop=8 shiftwidth=8 softtabstop=8
+  au FileType java setl tabstop=4 shiftwidth=4 softtabstop=4
+endif
+
+hi SpellBad ctermfg=015 ctermbg=003 cterm=none guifg=#FFFFFF guibg=#FF0000 gui=none
+
+" Call out missing markdown reference links
+function! MyHighlights()
+  syn match markdownError '^\[.*\]:[ \t]*$'
+endfunction
+autocmd Syntax * call MyHighlights()
+
+" Add GameMaker XML project files
+au BufNewFile,BufRead *.gmx set filetype=xml
+
+" Add Stylus (CSS Preprocessor in Node)
+au BufNewFile,BufRead *.stylus set filetype=css
+
+" Fix broken ssh config detection when no dot
+au BufNewFile,BufRead *ssh/config set filetype=sshconfig
+
+" Fix broken git config detection when no dot
+au BufNewFile,BufRead *gitconfig set filetype=gitconfig
+
+function! DetectNode()
+  if getline(1) =~ '^#.*\<node\>'
+    set filetype=javascript
+  endif
+endfunction
+au BufNewFile,BufRead * call DetectNode()

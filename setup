@@ -1,0 +1,19 @@
+#!/bin/sh
+
+tstamp=`$HOME/repos/workspace/bin/tstamp`
+work=$HOME/repos/workspace
+links="
+bash_completion.d
+bash_profile
+bashrc
+vim
+dircolors
+"
+
+for i in $links; do 
+  target=$HOME/.$i
+  if [ -e $target ]; then
+    mv $target ${target}.$tstamp
+  fi
+  ln -s $work/$i $target 
+done
