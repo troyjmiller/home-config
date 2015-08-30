@@ -1,0 +1,100 @@
+#!/usr/bin/env perl
+
+# usage: note
+#        note mynote (creates mynote.md in def notes dir)
+#        note mynote (edits)
+#        note another.yaml (creates different file type)
+#        note another.json (creates different file type)
+#        note another (edits another.yaml)
+#        note (lists)
+#        note m<tab> (completes if completion is on)
+#        note mynote D (deletes)
+#        note mynote cat (cats to stdout)
+#
+# (see @notes_dir_path for notes dirs, '.' if none else)
+
+sub fmt;
+my $name = $ARGV[0];
+my $command = $ARGV[1];
+my $editor ||= $ENV{EDITOR} || 'vi';
+my @notes_dir_path = split(/:/,$ENV{NOTESDIRPATH});
+my $def_suffix = '.md';
+my %names, $def_dir, $note; 
+
+# Looks for the following notes dirs in order:
+push @notes_dir_path, 
+  "$ENV{HOME}/.notes",
+  "$ENV{HOME}/repos/private/notes",
+  "$ENV{HOME}/repos/personal/notes",
+  "$ENV{HOME}/Dropbox/Notes",
+  "$ENV{HOME}/Google Drive/Notes",
+  "$ENV{HOME}/Documents/Notes";
+
+foreach my $path (@notes_dir_path) {
+  next unless -d $path;
+  $def_dir ||= $path;
+  foreach my $file (`find $path -type f`) {
+    my ($name) = $file =~ /\/([^\/]+)\.\S+$/;
+    $names{$name} = $file;
+  }
+}
+
+if ($command eq 'D') {
+  print "Deleting $names{$name}";
+  system "rm -f $names{$name}";
+  exit(0);
+}
+
+if ($command eq 'cat') {
+  system "cat $names{$name}";
+  exit(0);
+}
+
+if (not $name) {
+  print fmt(sort keys %names);
+  exit(0);
+}
+
+$def_dir ||= '.';
+
+my $note = $names{$name} ||= ($name =~ /\.\S+$/) ? "$def_dir/$name" : "$def_dir/$name$def_suffix";
+exec "$editor $note";
+
+sub fmt {
+  my $buf;
+  my $max_width = 78;
+  my $word_sep = q/\s+/;
+  foreach my $line (@_) {
+    foreach my $word (split($word_sep,$line)) {
+      my $word_length = length $word;
+
+      # new line
+      if ($current_line_width == 0) {
+        $current_line_width = $word_length;
+        $buf .= $word; # always print at least one word
+        if ($word_length >= $max_width) {
+          $buf .= "\n";
+          $current_line_width = 0;
+        }
+      }
+
+      # middle of a line
+      else {
+
+        # will the next word fit
+        if ($current_line_width + 1 + $word_length < $max_width) {
+          $buf .= ' ' . $word;
+          $current_line_width += 1 + $word_length;
+        }
+
+        # doesn't fit, wrap
+        else {
+          $buf .= "\n";
+          $buf .= $word;
+          $current_line_width = $word_length;
+        }
+      }
+    }
+  }
+  return $buf;
+}

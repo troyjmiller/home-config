@@ -1,12 +1,7 @@
-
 if [ ! $TERM = 'screen' ]; then
-
   # bail if somehow non-interactive
   [ -z "$PS1" ] && return 2>/dev/null
-
 fi
-
-MAIL=/var/spool/mail/`whoami` && export MAIL
 
 [ -z "$OS" ] && OS=`uname`
 case "$OS" in
@@ -36,39 +31,26 @@ repopaths() {
 }
 
 repath() {
-
-export GOPATH=$HOME/go
-
-export PATH=\
-"./":\
-"./bin":\
-"/usr/local/go/bin":\
+  export GOPATH=$HOME/go
+  export PATH=\
+./:\
+./bin:\
+/usr/local/go/bin:\
 "$HOME/bin":\
 "$HOME/repos/workspace/bin":\
 "$GOPATH/bin":\
 `repopaths`\
-"/usr/local/bin:"\
-"/usr/games:"\
-"/usr/bin:"\
-"/bin":\
-"/usr/local/sbin":\
-"/usr/sbin":\
-"/sbin"
+/usr/local/bin:\
+/usr/games:\
+/usr/bin:\
+/bin:\
+/usr/local/sbin:\
+/usr/sbin:\
+/sbin
 }
 repath
 
 alias path='echo -e ${PATH//:/\\n}'
-
-#---------------------------------- Note ----------------------------------
-
-_note() {
-  local list=`note`
-  #echo $list
-  local typed=${COMP_WORDS[COMP_CWORD]}
-  COMPREPLY=( $(compgen -W "$list" -- $typed))
-}
-complete -F _note note
-alias todo='note todo'
 
 #---------------------------------- ssh ----------------------------------
 
@@ -130,6 +112,7 @@ fi
 if [ $PLATFORM != 'bsd' ]; then
 	alias ls='ls -h --color=auto'
 else
+  export CLICOLOR=1
 	export LSCOLORS=gxfxbEaEBxxEhEhBaDaCaD
 fi
 
@@ -267,19 +250,6 @@ export SOL_cyan='\033[0;36m'
 export SOL_green='\033[0;32m'
 export SOL_reset='\033[0m'
 
-
-clogo() {
-echo -e "          $SOL_red        __   .__.__            __          __                        "
-echo -e "          $SOL_red  _____|  | _|__|  |   _______/  |______  |  | __                    "
-echo -e "          $SOL_red /  ___/  |/ /  |  |  /  ___/\   __\__  \ |  |/ /                    "
-echo -e "          $SOL_red \___ \|    <|  |  |__\___ \  |  |  / __ \|    <                     "
-echo -ne "          $SOL_red/____  >__|_ \__|____/____  > |__| (____  /__|_ \\"
-echo -e "${SOL_base3}_______             "
-echo -ne "          $SOL_red     \/     \/            \/            \/     \\"
-echo -e "${SOL_base3}/______/             "
-echo -e "                                       ${SOL_cyan}Coding Arts                             "
-}
-
 sol() {
   local color_var=\$"SOL_"$1
   eval local color=$color_var
@@ -287,10 +257,6 @@ sol() {
   do
     echo -e "$color$line$SOL_reset"
   done
-}
-
-smlogo() {
-  echo -e "${SOL_red}skilstak${SOL_base3}_$SOL_reset"
 }
 
 alias promptbig='export PS1="\n\[$SOL_red\]╔ \[$SOL_green\]\T \d \[${SOL_orange}\]\u@\h\[$base01\]:\[$SOL_blue\]\w$gitps1\n\[$SOL_red\]╚ \[$SOL_cyan\]\\$ \[$SOL_reset\]"'
@@ -304,11 +270,6 @@ promptmed
 
 alias listens='netstat -tulpn'
 alias ip="ifconfig | perl -ne '/^\s*inet addr/ and print'"
-
-# mac only?
-#export CLICOLOR=1
-#export LSCOLORS=ExFxCxDxBxegedabagacad
-#alias ls='ls -G'
 
 #-------------------------------- Vim-ish ---------------------------------
 
@@ -325,18 +286,6 @@ textfiles() {
   echo $list
 }
 
-vif() {
-  local file=`find . -name "*$**" ! -path '*images*' ! -type d | head -1`
-  if [ -f "$file" ]; then
-    $EDITOR $file
-  else
-    $EDITOR $key # when actually want 'vi' but fat-fingered
-  fi
-}
-
-vic() {
-  $EDITOR `which $1`
-}
 
 
 #---------------------------- personalization -----------------------------
@@ -348,13 +297,6 @@ vic() {
 [ -e "$HOME/repos/private/bashrc" ] && . "$HOME/repos/private/bashrc" 
 
 export TERM=xterm-256color
-
-# for when working outside, goes with a high-contrast terminal setting
-bw() {
-  alias ls='ls -h'
-  export PS1="\u@\h:\W\\$ "
-  export TERM=vt100
-}
 
 alias root='sudo su -'
 alias week="cd $HOME/repos/week"
