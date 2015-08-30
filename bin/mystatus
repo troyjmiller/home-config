@@ -1,0 +1,28 @@
+#!/usr/bin/env python3
+
+#from robs import prettytime
+from subprocess import call
+from os import environ
+
+status_file = environ['HOME'] + '/Documents/status.md'
+starting = '''
+What did I do?
+--------------
+    * 
+
+What am I going to do?
+----------------------
+    * 
+
+Is there anything blocking me?
+------------------------------
+    Nope.
+
+------------------------------------------------------------------------------
+'''
+
+with open(status_file, 'a') as f:
+#    f.write(prettytime())
+    f.write(starting)
+
+call(['vim', status_file])

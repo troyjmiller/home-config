@@ -1,0 +1,9 @@
+#!/bin/bash
+
+if [ "$(uname)" == "Darwin" ]; then
+    exec /usr/bin/fmt -l 0 "$@"
+elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
+    exec /usr/bin/fmt "$@"
+elif [ "$(expr substr $(uname -s) 1 10)" == "MINGW32_NT" ]; then
+    exec /usr/bin/fmt "$@"
+fi

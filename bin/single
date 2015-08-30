@@ -1,0 +1,4 @@
+#!/bin/sh
+
+export NOSCREEN=1
+/usr/bin/gnome-terminal

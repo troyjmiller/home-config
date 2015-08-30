@@ -1,0 +1,52 @@
+#!/usr/bin/perl
+
+# usage: clone TARGET
+#        clone ALIAS
+#        clone
+#
+#   TARGET is an ssh-style target
+#   ALIAS can be an alias from the .clones file
+#
+# Duplicates exactly the content of TARGET into
+# your $HOME/Clones directory.
+#
+# Easiest if you have ssh config and pubkey auth setup.
+
+$| = 1;
+
+my $clonesFile = "$ENV{'HOME'}/.clones";
+my $clonesDir = "$ENV{'HOME'}/Clones";
+
+sub rsync {
+  my ($ssh, $alias) = @_;
+  mkdir $clonesDir if not -d $clonesDir;
+  $clonesDir .= "/$alias/" if $alias;
+  my $command = "rsync --progress -avz $ssh $clonesDir";
+  print "$command\n";
+  system $command;
+}
+
+my $target = shift;
+
+if ($target =~ /(\/|\:)/) { # looks like an ssh target
+  rsync $target;
+} else {
+  if (-e $clonesFile) {
+    open(CLONES, $clonesFile) || die "Can't open $clonesfile\n";
+    my @lines = <CLONES>;
+    close CLONES;
+    my $found;
+    foreach my $line (@lines) {
+      next if $line =~ /^\s*(#|$)/; # skip comments and blanks 
+      chomp $line;
+      my ($alias, $ssh) = split(/\s+/, $line, 2);
+      next if $target and $target ne $alias;
+      $found = 1;
+      rsync($ssh, $alias);
+    }
+    rsync($target) if not $found and -e $target; # local copy
+  } else {
+    die "No $clonesFile file found.\n"
+  }
+}
+

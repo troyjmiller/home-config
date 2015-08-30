@@ -1,0 +1,46 @@
+#!/usr/bin/env python3
+
+import re
+import sys
+import fnmatch
+from os import listdir, rename
+from os.path import isfile, join, dirname, abspath, split
+
+if not len(sys.argv) >= 2:
+    print("usage: bump FILE")
+    print("       bump FILEN")
+    exit(1)
+
+first = sys.argv[1]
+if not isfile(first):
+    raise IOError('File not found.')
+
+def bump(name):
+    base, num = re.split('([0-9]+)', name)[0:2]
+    num_digits = len(num)
+    num = ('{:0' + str(num_digits) + '}').format(int(num)+1)
+    bumped = base + str(num)
+    return bumped,base,num
+
+first_path = abspath(first)
+first_fname = split(first)[-1]
+
+fdir = dirname(first_path)
+bumped,base,num = bump(first_fname)
+files = sorted([f for f in listdir(fdir)
+            if isfile(join(fdir,f)) and f.startswith(base)])
+
+bump_us = []
+found = False
+for f in files:
+    if f == first_fname:
+        found = True
+    if not found: continue
+    bump_us.append(f)
+
+for f in reversed(bump_us):
+    bumped = bump(f)[0]
+    fpath = join(fdir,f)
+    bpath = join(fdir,bumped)
+    print('Bumping {} to {}'.format(fpath,bpath))
+    rename(fpath,bpath)

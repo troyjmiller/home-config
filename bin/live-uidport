@@ -1,0 +1,4 @@
+#!/bin/bash
+uidp=`uidport`
+exec browser-sync start --proxy "localhost:8$uidp" \
+     --files '**' --port 3$uidp

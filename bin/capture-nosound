@@ -1,0 +1,3 @@
+#!/bin/sh
+avconv -r 5 -s 1366x768 -f x11grab -i :0.0 -strict experimental -vcodec mpeg4 -qscale 2 filename.mp4
+
