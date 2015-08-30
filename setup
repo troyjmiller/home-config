@@ -8,6 +8,7 @@ bash_profile
 bashrc
 vim
 dircolors
+gitconfig
 "
 
 for i in $links; do 

@@ -1,0 +1,7 @@
+[push]
+	default = simple
+[user]
+	email = rob@skilstak.com
+	name = Rob Muhlestein
+[url "git@github.com:"]
+	insteadOf = https://github.com/
