@@ -1,0 +1,8 @@
+#!/bin/sh
+name=$1
+if [ -z "$name" ]
+then
+  awk -F: '(/bash/ && !/SkilStak|Project|root/){print $1,$5}' /etc/passwd | awk -F, '{print $1}' 
+else
+  awk -F: '(/bash/ && !/SkilStak|Project|root/){print $1,$5}' /etc/passwd | awk -F, '{print $1}' |grep -i $name
+fi

@@ -1,0 +1,8 @@
+#!/bin/sh
+
+# lists all files in reverse chronological order of when
+# they were last modified
+
+top=$1
+[ "$1" = "" ] && top=.
+find $top -type f -printf '%TY-%Tm-%Td %TT %p\n' |sort -r

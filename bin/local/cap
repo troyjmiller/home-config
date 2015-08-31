@@ -1,0 +1,21 @@
+#!/bin/sh
+
+# quick capture from the command line designed 
+# to have only enough quality to communicate what
+# is happening
+
+file=$HOME/Videos/cap_`date +%Y%m%d%H%M%S`.mp4
+dimensions=`xrandr 2>/dev/null| perl -ane '/current\s+(\d+)\s+x\s+(\d+)/ && print "$1x$2"'`
+if [ -z $dimensions ]
+then
+  echo "Failed to grab dimensions from xrandr."
+  exit 1
+fi
+#avconv -v quiet -r 2 -s $dimensions -f x11grab -i :0.0 -strict experimental \
+#  -vcodec mpeg4 -qscale 20 $file &
+avconv -r 2 -s $dimensions -f x11grab -i :0.0 -strict experimental \
+  -vcodec mpeg4 -qscale 20 $file &
+pid=$!
+echo $pid > $HOME/Videos/.cappid
+echo $file > $HOME/Videos/.caplast
+

@@ -1,0 +1,10 @@
+#!/bin/bash
+
+uid=$UID
+
+if [ -n "$1" ]; then
+  uid=`uid $1`
+fi
+
+uidport=`echo $uid | perl -ane '$F[0]=~m/(...)$/;print "$1\n"'`
+[ -n "$uidport" ] && echo $uidport

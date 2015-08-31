@@ -1,0 +1,2 @@
+#!/bin/bash
+exec dtach -A www-3`uidport` live-uidport

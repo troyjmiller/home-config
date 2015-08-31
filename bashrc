@@ -11,6 +11,8 @@ case "$OS" in
 esac
 export PLATFORM OS
 
+export WORK=$HOME/repos/workspace
+
 HISTCONTROL=ignoredups:ignorespace
 shopt -s histappend
 shopt -s checkwinsize
@@ -35,13 +37,13 @@ repath() {
   export PATH=\
 ./:\
 ./bin:\
-/usr/local/go/bin:\
 "$HOME/bin":\
-"$HOME/repos/workspace/bin":\
+"$WORK/bin":\
 "$GOPATH/bin":\
 `repopaths`\
-/usr/local/bin:\
 /usr/games:\
+/usr/local/go/bin:\
+/usr/local/bin:\
 /usr/bin:\
 /bin:\
 /usr/local/sbin:\
@@ -85,9 +87,10 @@ alias pytest='nosetests'
 alias pyinstall='sudo pip3 install --upgrade .'
 alias runallpy='for i in *.py;do python3 $i; done'
 alias jsonpp='json_pp'
+alias todo='note todo'
 
 export PYTHONDONTWRITEBYTECODE=true
-export PYTHONPATH=$HOME/lib/python
+export PYTHONPATH=$WORK/lib/python
 
 alias lx='ls -lXB'         #  Sort by extension.
 alias lk='ls -lSr'         #  Sort by size, biggest last.

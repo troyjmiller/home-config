@@ -1,0 +1,56 @@
+#!/bin/bash
+
+if [ -z "$1" ]; then
+  echo "usage: addmc <username>"
+  exit
+fi
+
+if [ "$EUID" -ne 0 ]; then
+  echo "Need to be root"
+  exit
+fi
+
+user=$1
+uid=`uid $1`
+port=9${uid:1}
+mcsrc=/etc/skel/mc
+home=`eval echo ~$user`
+oldserver=$home/server
+mc=$home/mc
+bungee=/home/mcbungee/mc/config.yml
+bungeeline="
+  $user:
+    address: localhost:$port
+    restricted: false"
+
+if [ -z "$uid" ]; then
+  echo "Can't fine UID for user $user"
+  exit
+fi
+
+if [ -d $oldserver ]; then
+  echo Preserving $oldserver/world
+  mv $oldserver/oldworld $home
+  rm -rf $oldserver
+fi
+
+if [ -d $mc ]; then
+  echo Preserving $mc/world
+  mv $mc/world $home/oldmcworld
+  rm -rf $mc
+fi
+
+cp -r $mcsrc $home
+
+if [ -d $home/oldmcworld ]; then
+  echo Using $home/oldmcworld as $mc/world
+  mv $home/oldmcworld $mc/world
+fi
+
+chown -R $user:$user $mc
+perl -p -i -e "s/SET2PORT/$port/" $mc/server.properties
+perl -p -i -e "s/^servers:/servers:    $bungeeline/" $bungee
+sleep 3
+su - $user -c 'cd mc; mc'
+su - mcbungee -c "cd mc; vi $bungee"
+su - mcbungee -c 'cd mc; mc'

@@ -1,0 +1,85 @@
+#!/bin/sh
+
+SUFFIX='.csv'
+DIR='Projects/worked'
+TSTAMP=`/bin/date +%Y%m%d%H%M%S`
+
+#TODO add field size limitations to keep it pretty at 79 cols
+
+if [ -z "$EDITOR" ]
+then
+    echo "Woah there. (export EDITOR=???)"
+    exit 1
+fi
+
+if [ -z "$HOME" ]
+then
+    echo "What's your \$HOME? (export HOME=???)"
+    exit 1
+fi 
+
+if [ ! -e $HOME/$DIR ]
+then
+    mkdir $HOME/$DIR
+    echo "Created $HOME/$DIR"
+fi
+
+if [ -z "$1" ]
+then
+    exec "$EDITOR" "$HOME/$DIR/worked$SUFFIX"
+fi
+
+if [ -f "$HOME/$DIR/worked_on_last" ]
+then
+    PROJECT=`head -1 "$HOME/$DIR/worked_on_last"`
+else
+    PROJECT=current
+fi
+
+if [ -f "$HOME/$DIR/worked_for_last" ]
+then
+    WHOM=`head -1 "$HOME/$DIR/worked_for_last"`
+else
+    WHOM=myself
+fi
+
+USAGE="usage: worked HOURS [on PROJECT] [for WHOM] [doing WHAT]"
+
+LOGGED=`/bin/date +%Y%m%d%M%H%S`
+HOURS="$1"
+shift
+
+#TODO add hour type validation
+#TODO add 'from' and 'to' support
+#TODO add 'total'
+#TODO add 'total today'
+#TODO add 'total week'
+#TODO add 'total month'
+
+fail()
+{
+    echo $USAGE
+    exit 1
+}
+
+while [ $# -gt 0 ]
+do
+    if [ -z "$2" ]
+    then
+        WHAT=$1
+        shift 1
+    else
+        case "$1" in
+            for) WHOM=$2; shift 2 ;;
+            doing) WHAT=$2; shift 2 ;;
+            on) PROJECT=$2; shift 2 ;;
+            *) WHAT="$@"; break ;;
+        esac
+    fi
+done
+
+echo "$WHOM" > $HOME/$DIR/worked_for_last
+echo "$PROJECT" > $HOME/$DIR/worked_on_last
+echo "$TSTAMP\t$HOURS\t$WHOM\t$PROJECT\t$WHAT" >> $HOME/$DIR/worked$SUFFIX
+echo ...
+tail -10 $HOME/$DIR/worked$SUFFIX

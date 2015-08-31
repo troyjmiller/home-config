@@ -1,0 +1,10 @@
+#!/bin/bash
+
+user=$USER
+
+if [ -n "$1" ]; then
+  user=$1
+fi
+
+uid=`awk -F: -v user=$user '$1 == user {print $3}' /etc/passwd`
+[ -n "$uid" ] && echo $uid

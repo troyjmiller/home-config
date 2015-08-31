@@ -1,0 +1,55 @@
+#!/bin/sh
+
+TSTAMP=`/bin/date +%Y%m%d%H%M%S`
+
+if [ -z "$HOME" ]
+then
+    echo "What's your \$HOME? (export HOME=???)"
+    exit 1
+fi 
+
+if [ ! -e $HOME/Trash ]
+then
+    mkdir $HOME/Trash
+    echo "Created $HOME/Trash"
+fi
+
+if [ "$1" = "-e" ]
+then
+    rm -rvf $HOME/Trash/
+    exit 0
+fi
+
+if [ "$1" = "-l" ]
+then
+    ls -1 $HOME/Trash/
+    exit 0
+fi
+
+if [ "$1" = "-c" ]
+then
+    name=`basename $2`
+    cp $2 $HOME/Trash/
+    mv "$HOME/Trash/$name" "$HOME/Trash/${TSTAMP}_$name"
+    echo "$2 (copy) --> $HOME/Trash/${TSTAMP}_$name"
+    exit 0
+fi
+
+if [ ! -e "$1" ]
+then
+    echo "Can't find file to trash: '$1'"
+    exit 1
+fi
+
+if [ -z "$1" -o ! -e "$1" ]
+then
+    echo "usage: trash FILE"
+    exit 1
+fi
+
+name=`basename $1`
+mv $1 $HOME/Trash/
+mv "$HOME/Trash/$name" "$HOME/Trash/${TSTAMP}_$name"
+echo "$1 --> $HOME/Trash/${TSTAMP}_$name"
+
+

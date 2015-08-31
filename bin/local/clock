@@ -1,0 +1,27 @@
+#!/usr/bin/env python3
+
+import sys
+from datetime import datetime, timedelta
+from os.path import expanduser, join
+
+user_home = expanduser('~')
+clock_file = join(user_home, '.clock')
+dt_format = "%Y-%m-%d %H:%M:%S"
+
+if sys.argv[1].startswith('i'):
+    in_time = str(datetime.now()).split('.')[0]
+    print("In at %s" % in_time)
+    with open(clock_file, 'w') as f:
+        f.write(in_time)
+    f.closed
+
+if sys.argv[1].startswith('o'):
+    out_at = datetime.now()
+    print("Out at %s" % out_at)
+    with open(clock_file, 'r') as f:
+        line = f.read()
+        in_at = datetime.strptime(line, dt_format)
+    f.closed
+    delta = out_at - in_at
+    print("Worked %s" % delta)
+

@@ -20,5 +20,8 @@ for i in $links; do
   ln -s $work/$i $target 
 done
 
-ln -s $work/bin $HOME
-ln -s $work/lib $HOME
+echo
+echo "Don't forget to change your settings in gitconfig:"
+echo
+cat gitconfig
+echo

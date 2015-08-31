@@ -1,0 +1,4 @@
+#!/bin/sh
+dimensions=`xrandr 2>/dev/null| awk '/^default connected/{print $3}'`
+avconv -r 30 -s $dimensions -f x11grab -i :0.0 -f alsa -i plughw:Intel -ab 64k -strict experimental -vcodec mpeg4 -qscale 2 filename.mp4
+

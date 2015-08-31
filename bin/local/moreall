@@ -1,0 +1,12 @@
+#!/bin/sh
+
+if [ `which more` ]; then mymore=more; else mymore=less; fi
+tmpfile=/tmp/$$
+list=`lall $1`
+header="File names with \"$1\""
+echo $header
+echo `perl -e "print('=' x length('$header'))"`
+echo "$list"
+echo "Press [Enter] to continue ..."
+read blah
+exec $mymore $list
