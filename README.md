@@ -1,6 +1,6 @@
 # Standard SkilStak Workspace 
 
-***You don't need this is you are working from `code.skilstak.io` only.***
+***You don't need this is you are only working from `code.skilstak.io`.***
 
 This repo is to help you create a SkilStak-ish workspace on your
 own Linux/Mac computer or Raspberry Pi.
