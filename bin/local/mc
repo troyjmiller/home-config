@@ -1,3 +1,0 @@
-#!/bin/sh
-
-exec dtach -A running ./start.sh

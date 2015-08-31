@@ -1,3 +1,0 @@
-#!/bin/sh
-
-find . -exec grep --color "$1" {} /dev/null \;

@@ -1,3 +1,0 @@
-#!/bin/sh
-kill -INT `cat $HOME/Videos/.cappid`
-rm $HOME/Videos/.cappid

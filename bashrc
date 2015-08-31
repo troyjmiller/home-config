@@ -2,6 +2,7 @@ export WORK=$HOME/repos/workspace
 export SKILSTAK=/usr/share/skilstak
 export TERM=xterm-256color
 
+
 if [ ! $TERM = 'screen' ]; then
   # bail if somehow non-interactive
   [ -z "$PS1" ] && return 2>/dev/null
@@ -56,6 +57,7 @@ repath() {
 repath
 
 alias path='echo -e ${PATH//:/\\n}'
+alias workspace="cd $WORK"
 
 #--------------------------- Utility Functions ----------------------------
 
