@@ -1,0 +1,57 @@
+#!/usr/bin/env python3
+
+import sys
+import argparse
+import solarized.colors as c
+import os
+import pwd
+
+parser = argparse.ArgumentParser(description='Mmmmm, SkilBux')
+parser.add_argument('user', metavar='user', nargs='?',
+                    default=pwd.getpwuid(os.geteuid())[0], help='user')
+parser.add_argument('amount', metavar='amount', nargs='?', type=int,
+                    help='amount to add (- to subtract) (root only)')
+args = parser.parse_args()
+user = args.user
+amount = args.amount
+uid = pwd.getpwnam(user).pw_uid
+filename = os.path.join(os.path.expanduser("~"+user),".bux")
+
+def show(bux):
+    print(c.yellow + user + " has " + c.cyan +
+        str(bux) + c.reset + c.yellow + " SkilBux." + c.reset)
+
+
+if os.path.isfile(filename):
+    fileowner = os.stat(filename).st_uid
+    filegroup = os.stat(filename).st_gid
+    if fileowner != 0 and filegroup != 0:
+        print(c.red + "Nice try. But no SkilBux for you!")
+        os.remove(filename)
+        f = open(filename,'w')
+        print('0',file=f)
+        f.close()
+        os.execv('skilbux',sys.argv)
+    elif amount and os.geteuid() == 0:
+        f = open(filename,'r+')
+        bux = int(f.readline().strip())
+        bux += amount
+        f.seek(0)
+        print(bux,file=f)
+        f.close()
+        show(bux)
+    else:
+        f = open(filename,'r')
+        bux = f.readline().strip()
+        show(bux)
+else:
+    if amount:
+        f = open(filename,'w')
+        f.seek(0)
+        print(amount,file=f)
+        f.close()
+    """
+    else:
+        print(c.red + "Sorry, no SkilBux found." + c.reset)
+        print(c.base01 + "(Contact learn@skilstak.com to ask why)" + c.reset)
+    """

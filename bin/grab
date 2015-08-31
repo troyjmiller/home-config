@@ -1,0 +1,43 @@
+#!/bin/sh
+
+# same as `git clone` but just makes a copy without the git stuff in it
+# Examples:
+#     grab ~/repos/sample 
+#     grab ~/repos/sample ~/repos/mytarget
+#     cd myproject; grab git@github.com:skilstak/python-pypa-sampleproject
+#     grab git@github.com:skilstak/python-pypa-sampleproject  ~/repos/mine
+
+tmp=/tmp
+source=$1
+target=$2
+remote=
+
+
+case $source in
+    git@*|http*|ssh:*) remote=1 ;;
+    *) remote= ;;
+esac
+
+if [ -z "$target" ]; then
+    target=`pwd`
+fi
+
+mkdir -p $target
+
+name=`basename -s.git "$source"`
+
+if [ $remote ]; then
+    cd $tmpsource
+    tmpsource=$tmp/$name$$
+    git clone $source $tmpsource
+    cd $tmpsource
+else
+    cd $source
+fi
+
+git archive master | tar -x -C $target
+
+if [ -n "$remote" -a -n "$tmpsource" ]; then
+    echo Removing $tmpsource
+    rm -rf "$tmpsource"
+fi

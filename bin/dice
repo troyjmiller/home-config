@@ -1,0 +1,74 @@
+#!/usr/bin/env python3
+
+import colors as c
+import random
+
+sides = []
+
+sides.append('''
+ -------
+|       |
+|   o   |
+|       |
+ -------
+''')
+
+sides.append('''
+ -------
+| o     |
+|       |
+|     o | 
+ -------
+''')
+
+sides.append('''
+ -------
+| o     |
+|   o   |
+|     o |
+ -------
+''')
+
+sides.append('''
+ -------
+| o   o |
+|       |
+| o   o |
+ -------
+''')
+
+sides.append('''
+ -------
+| o   o |
+|   o   |
+| o   o |
+ -------
+''')
+
+sides.append('''
+ -------
+| o   o |
+| o   o |
+| o   o |
+ -------
+''')
+
+num = 1
+while True:
+    print(c.clear, end="")
+    for count in range(num):
+        side = random.choice(sides)
+        print(c.random_color() + side + c.reset, end="")
+    while True:
+        try:
+            new_num = input()
+        except KeyboardInterrupt:
+            exit(0)
+        if new_num:
+            try: 
+                num = int(new_num)
+            except ValueError:
+                print(c.red + "Needs a number." + c.reset)
+                continue
+        break
+

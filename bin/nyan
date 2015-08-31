@@ -1,0 +1,48 @@
+#!/usr/bin/env python3 
+
+import colors as c
+import random
+import time
+
+try:
+    while True:
+        ending = ' ' * random.randint(1,20)
+        print(c.rc() + 'Nyan', end=ending)
+except:
+
+    try:
+
+        print(c.clear)
+
+        while True:
+
+            print("\n\n\n")
+
+            print(    
+            c.r + ' - - - - - - - - - - - - - - - -' + c.magenta + ' ,------,\n' +
+            c.o + '- - - - - - - - - - - - - - - - ' + c.magenta + '|       |\n' +
+            c.yellow + ' - - - - - - - - - - - - - - - -' + c.magenta + '|    ' + c.base00 + '/\_/\\\n' +
+            c.green + '- - - - - - - - - - - - - - - -' + c.base00 + '~' + c.magenta + "|___" + c.base00 + '(_^_.^)\n' +
+            c.blue + ' - - - - - - - - - - - - - - - -' + c.base00 + ' "  "\n' +
+            c.violet + '- - - - - - - - - - - - - - - - ')
+
+            time.sleep(.25)
+            print(c.clear)
+
+            print('\n')
+            print('\n')
+
+            print(
+            c.r + '- - - - - - - - - - - - - - - - ' + c.magenta + ' ,------,\n' +
+            c.o + ' - - - - - - - - - - - - - - - -' + c.magenta + '|       |\n' +
+            c.yellow + '- - - - - - - - - - - - - - - - ' + c.magenta + '|    ' + c.base00 + '/\_/\\\n' +
+            c.green + '- - - - - - - - - - - - - - - -' + c.base00 + '~' + c.magenta + "|___" + c.base00 + '(_^_.^)\n' +
+            c.blue + '- - - - - - - - - - - - - - - - ' + c.base00 + '     "  "\n' +
+            c.violet + ' - - - - - - - - - - - - - - - -')
+
+            time.sleep(.25)
+            print(c.clear)
+
+    except: 
+        c.clear_screen()
+        exit(0)

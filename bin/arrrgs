@@ -1,0 +1,12 @@
+#!/usr/bin/env python3
+
+import colors as c
+import sys
+
+print(c.cl + c.y + 'You have',len(sys.argv),'arrrrrrguments:' + c.x)
+
+for index in range(len(sys.argv)):
+    print('    ', index, '-->', c.base3 + sys.argv[index] + c.reset)
+
+print(sys.argv)
+print()

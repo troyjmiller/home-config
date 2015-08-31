@@ -1,0 +1,23 @@
+#!/bin/bash
+
+echo -e "
+  [0;33mclear[0m - clear the screen                [0;33mpwd[0m - show where you are
+  [0;33mls[0m - list stuff here                    [0;33mls -l[0m - list stuff with permissions
+  [0;33mls -l hi[0m - list hi's permissions        [0;33mls -al[0m - list all, even hidden
+  [0;33mmkdir repos[0m - make a repos dir          [0;33mvi hello[0m - create and edit hello 
+  [0;33mcd repos[0m - change to repos dir          [0;33mcd ..[0m - change dir to parent
+  [0;33mcd[0m - change current dir to home         [0;33mcd ~bob[0m - change dir to bob's home
+  [0;33mmv hello hi[0m - rename hello to hi        [0;33mcp hi nyan[0m - copy hi to nyan
+  [0;33mrm hello[0m - remove file hello            [0;33mrm -rf foo[0m - remove foo dir
+  [0;33mchmod +x hello[0m - make runnable          [0;33mchmod go= hi[0m - make hi private
+  [0;33mtop[0m - show top running processes        [0;33m<ctrl>-c[0m - cancel something running
+
+      (in vim) [0;33mi[0m - switch to INSERT mode (look in bottom left)
+      (in vim) [0;33m<arrows>[0m - move around in INSERT mode
+      (in vim) [0;33m<esc>[0m - switch to COMMAND mode from INSERT
+      (in vim) [0;33m<esc>u[0m - undo, which you can repeat
+      (in vim) [0;33m<esc>:w[0m - save without exiting vi 
+      (in vim) [0;33m<esc>ZZ or <esc>:q[0m - save and exit
+      (in vim) [0;33m<esc>ZQ or <esc>:q![0m - just quit
+"
+

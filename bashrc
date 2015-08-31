@@ -87,7 +87,7 @@ alias runallpy='for i in *.py;do python3 $i; done'
 alias jsonpp='json_pp'
 
 export PYTHONDONTWRITEBYTECODE=true
-export PYTHONPATH=$HOME/repos/python-1:$HOME/repos/python-2:$HOME/lib/python
+export PYTHONPATH=$HOME/lib/python
 
 alias lx='ls -lXB'         #  Sort by extension.
 alias lk='ls -lSr'         #  Sort by size, biggest last.

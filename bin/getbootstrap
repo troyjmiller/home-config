@@ -1,0 +1,4 @@
+#!/bin/sh
+
+wget https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css
+mv bootstrap.min.css _bootstrap.min.css

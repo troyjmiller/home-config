@@ -2,6 +2,7 @@
 
 tstamp=`$HOME/repos/workspace/bin/tstamp`
 work=$HOME/repos/workspace
+
 links="
 bash_completion.d
 bash_profile
@@ -18,3 +19,6 @@ for i in $links; do
   fi
   ln -s $work/$i $target 
 done
+
+ln -s $work/bin $HOME
+ln -s $work/lib $HOME
