@@ -17,10 +17,10 @@ cd workspace
 
 # Dependencies
 
-Eventually would like to have `setup` look for the packages, commands,
-and apps used by this workspace. Until then make sure you have the
-following installed, (which you learn to do in class if you don't
-know):
+Eventually `setup` may including looking up dependencies and prompting
+for installing them (packages, commands, apps). For now you will
+have to ensure you have the following installed, (which you learn
+to do in class if you don't know):
 
 * git
 * vim 7.4+
@@ -29,5 +29,5 @@ know):
 * Node/NPM
 * Harp.js
 * Surge.js
+* Chrome
 * Solarized terminal
-
