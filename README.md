@@ -1,14 +1,33 @@
-# My Unix/Linux Workspace
+# Standard SkilStak Workspace 
 
-Feel free to pilfer. Assumes a `repos/workspace` location for everything. If
-you live dangerously you could do something like this (but make sure you
-look at the files, even customize them to your own values, before):
+***You don't need this is you are working from `code.skilstak.io` since it
+is all setup for you automatically.***
+
+This repo is to help you create a SkilStak-ish workspace on your
+own Linux/Mac computer or Raspberry Pi.
 
 ```bash 
 cd ~
 mkdir repos
 cd repos
-git clone git@github.com:robmuh/workspace.git
+git clone git@github.com:skilstak/workspace.git
 cd workspace
 ./setup
 ```
+
+# Dependencies
+
+Eventually would like to have `setup` look for the packages, commands,
+and apps used by this workspace. Until then make sure you have the
+following installed, (which you learn to do in class if you don't
+know):
+
+* git
+* vim 7.4+
+* Python 3+
+* Java JDK 7+ 
+* Node/NPM
+* Harp.js
+* Surge.js
+* Solarized terminal
+
