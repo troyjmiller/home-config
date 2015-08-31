@@ -4,15 +4,15 @@
 . ./bashrc
 
 _ssh() {
-  if [ ! -e "$HOME/.ssh/iid_rsa.pub" ]; then
+  if [ ! -e "$HOME/.ssh/id_rsa.pub" ]; then
     echo "Looks like you don't have any SSH keys yet. Wanna create them now?"
     read answer
     if [ "$answer" == "yes" -o "$answer" == "y" ]; then
       echo "Usually just hit enter to accept all the defaults."
-      #ssh-keygen
+      ssh-keygen
       clear
       echo "Cut and paste (yes with the mouse) the following to your" | sol yellow
-      echo "GitHub -> Settings -> SSH Keys:"
+      echo "GitHub -> Settings -> SSH Keys:" | sol yellow
       echo
       pubkey
       echo
@@ -49,5 +49,5 @@ _git(){
 
 #####################################################
 _ssh
-#_links
-#_git
+_links
+_git
