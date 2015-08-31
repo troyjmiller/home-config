@@ -1,3 +1,7 @@
+export WORK=$HOME/repos/workspace
+export SKILSTAK=/usr/share/skilstak
+export TERM=xterm-256color
+
 if [ ! $TERM = 'screen' ]; then
   # bail if somehow non-interactive
   [ -z "$PS1" ] && return 2>/dev/null
@@ -10,8 +14,6 @@ case "$OS" in
   FreeBSD|Darwin )  PLATFORM=bsd ;;
 esac
 export PLATFORM OS
-
-export WORK=$HOME/repos/workspace
 
 HISTCONTROL=ignoredups:ignorespace
 shopt -s histappend
@@ -39,6 +41,7 @@ repath() {
 ./bin:\
 "$HOME/bin":\
 "$WORK/bin":\
+"$SKILSTAK/bin":\
 "$GOPATH/bin":\
 `repopaths`\
 /usr/games:\
@@ -90,7 +93,7 @@ alias jsonpp='json_pp'
 alias todo='note todo'
 
 export PYTHONDONTWRITEBYTECODE=true
-export PYTHONPATH=$WORK/lib/python
+export PYTHONPATH=$HOME/lib/python:$WORK/lib/python:$SKILSTAK/lib/python
 
 alias lx='ls -lXB'         #  Sort by extension.
 alias lk='ls -lSr'         #  Sort by size, biggest last.
@@ -102,12 +105,7 @@ alias lm='ll |more'        #  Pipe through 'more'
 alias lr='ll -R'           #  Recursive ls.
 alias la='ll -A'           #  Show hidden files.
 
-# why perl versions that could do with bash param sub? bourne compat
-join() {
-  perl -e '$d=shift; print(join($d,@ARGV))' "$@"
-}
-
-#-------------------------------- PowerGit --------------------------------
+#-------------------------------- Git --------------------------------
 
 export GITURLS=\
 "$HOME/.giturls":\
@@ -116,7 +114,6 @@ export GITURLS=\
 "$HOME/repos/private/giturls"
 alias gurlpath='echo -e ${GITURLS//:/\\n}'
 
-alias gcd=repo
 alias repos='cd "$HOME/repos"'
 
 gget() {
@@ -153,22 +150,12 @@ export SOL_green='\033[0;32m'
 export SOL_reset='\033[0m'
 export SOL_clear='\\\033[H\\\033[2J'
 
-sol() {
-  local color_var=\$"SOL_"$1
-  eval local color=$color_var
-  while read line
-  do
-    echo -e "$color$line$SOL_reset"
-  done
-}
-
 alias promptbig='export PS1="\n\[$SOL_red\]╔ \[$SOL_green\]\T \d \[${SOL_orange}\]\u@\h\[$base01\]:\[$SOL_blue\]\w$gitps1\n\[$SOL_red\]╚ \[$SOL_cyan\]\\$ \[$SOL_reset\]"'
 alias promptmed='export PS1="\[${SOL_base1}\]\u\[$SOL_base01\]@\[$SOL_base00\]\h:\[$SOL_yellow\]\W\[$SOL_cyan\]\\$ \[$SOL_reset\]"'
 alias promptpwd='export PS1="\[${SOL_base01}\]\W\[$SOL_cyan\]\\$ \[$SOL_reset\]"'
 alias promptnone='export PS1="\[$SOL_cyan\]\\$ \[$SOL_reset\]"'
 
 # default
-#export PS1="\[${SOL_base0}\]\u\[$SOL_base01\]@\[$SOL_base00\]\h:\W\[$SOL_cyan\]\\$ \[$SOL_reset\]"
 promptmed
 
 alias listens='netstat -tulpn'
@@ -198,7 +185,6 @@ textfiles() {
 [ -e "$HOME/repos/personal/bashrc" ] && . "$HOME/repos/personal/bashrc" 
 [ -e "$HOME/repos/private/bashrc" ] && . "$HOME/repos/private/bashrc" 
 
-export TERM=xterm-256color
 
 alias root='sudo su -'
 alias week="cd $HOME/repos/week"

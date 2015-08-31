@@ -1,0 +1,9 @@
+#!/bin/bash
+
+local color_var=\$"SOL_"$1
+eval local color=$color_var
+while read line
+do
+  echo -e "$color$line$SOL_reset"
+done
+

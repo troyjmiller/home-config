@@ -1,0 +1,10 @@
+#!/bin/sh
+
+# usage: join DELIM ...
+# example: join + hello there
+# hello+there
+
+# why?
+# because perl is more ubiquitous than bash when you want POSIX-ish-ness
+
+perl -e '$d=shift; print(join($d,@ARGV))' "$@"
