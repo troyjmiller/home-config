@@ -22,7 +22,7 @@
             "10" : "#586e75",
             "4" : "#268bd2"
          },
-         "background-color": "#002b36",
+         "background-color": "#073642",
          "font-family" : "\"Consolas\", \"Monaco\", \"DejaVu Sans Mono\", \"Everson Mono\", FreeMono, \"Menlo\", \"Terminal\", monospace",
          "cursor-color": "#eee8d5",
          "foreground-color": "#eee8d5",
