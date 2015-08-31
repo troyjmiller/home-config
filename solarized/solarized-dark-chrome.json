@@ -25,7 +25,9 @@
          "background-color": "#002b36",
          "font-family" : "\"Consolas\", \"Monaco\", \"DejaVu Sans Mono\", \"Everson Mono\", FreeMono, \"Menlo\", \"Terminal\", monospace",
          "cursor-color": "#eee8d5",
-         "foreground-color": "#eee8d5"
+         "foreground-color": "#eee8d5",
+         "enable-bold" : true,
+         "font-size" : 16
       }
    },
    "version" : 1
