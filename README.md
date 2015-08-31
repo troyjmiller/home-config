@@ -1,6 +1,9 @@
 # Standard SkilStak Workspace 
 
-***You don't need this is you are only working from `code.skilstak.io`.***
+***You don't need this is you are only working from `code.skilstak.io`. If
+you are setting up your own multi-user Linux environment take a look at
+[`usr-share-skilstak`](http://github.com/skilstak/usr-share-skilstak)
+instead.***
 
 This repo is to help you create a SkilStak-ish workspace on your
 own Linux/Mac computer or Raspberry Pi.
