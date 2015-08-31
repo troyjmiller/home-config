@@ -21,12 +21,12 @@ for installing them (packages, commands, apps). For now you will
 have to ensure you have the following installed, (which you learn
 to do in class if you don't know):
 
-* git
-* vim 7.4+
-* Python 3+
-* Java JDK 7+ 
-* Node/NPM
-* Harp.js
-* Surge.js
-* Chrome
-* Solarized terminal
+* [git/GitHub](http://github.com)
+* [vim 7.4+](http://vim.org)
+* [Python 3+](http://python.org)
+* [Java OpenJDK 7+](http://openjdk.java.net)
+* [Node/NPM](http://nodejs.org)
+* [Harp](http://harpjs.com)
+* [Surge](http://surge.sh)
+* [Google Chrome](http://google.com/chrome)
+* [Solarized terminal](solarized)
