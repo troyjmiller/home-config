@@ -6,7 +6,12 @@ you are setting up your own multi-user Linux environment take a look at
 instead.***
 
 This repo is to help you create a SkilStak-ish workspace on your
-own Linux/Mac computer or Raspberry Pi.
+own Linux/Mac computer or Raspberry Pi. You can clone this directly
+and make your own local changes and `git pull` on occasion with
+something is added or you can fork the repo and save your own changes
+and pull down upstream changes from time to time.
+
+# Simple Clone Method
 
 ```bash 
 cd ~
@@ -16,6 +21,13 @@ git clone git@github.com:skilstak/workspace.git
 cd workspace
 ./setup
 ```
+
+# Fork Method
+
+ 1. Fork from [github.com/skilstak/home-config](http://github.com/skiltak/home-config)
+ 2. Clone your copy of the repo
+ 3. Sync your master with upstream [like this](https://help.github.com/articles/syncing-a-fork/)
+ 4. Commit your synced changes with `save`
 
 # Dependencies
 
