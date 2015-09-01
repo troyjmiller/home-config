@@ -1,4 +1,4 @@
-export WORK=$HOME/repos/workspace
+export CONFIG=$HOME/repos/home-config
 export SKILSTAK=/usr/share/skilstak
 export TERM=xterm-256color
 
@@ -40,7 +40,7 @@ repath() {
 ./:\
 ./bin:\
 "$HOME/bin":\
-"$WORK/bin":\
+"$CONFIG/bin":\
 "$SKILSTAK/bin":\
 "$GOPATH/bin":\
 `repopaths`\
@@ -56,7 +56,7 @@ repath() {
 repath
 
 alias path='echo -e ${PATH//:/\\n}'
-alias workspace="cd $WORK"
+alias config="cd $CONFIG"
 
 if [ -x /usr/bin/dircolors ]; then
   if [ -r ~/.dircolors ]; then
@@ -83,7 +83,7 @@ alias jsonpp='json_pp'
 alias todo='note todo'
 
 export PYTHONDONTWRITEBYTECODE=true
-export PYTHONPATH=$HOME/lib/python:$WORK/lib/python:$SKILSTAK/lib/python
+export PYTHONPATH=$HOME/lib/python:$CONFIG/lib/python:$SKILSTAK/lib/python
 
 alias lx='ls -lXB'         #  Sort by extension.
 alias lk='ls -lSr'         #  Sort by size, biggest last.
