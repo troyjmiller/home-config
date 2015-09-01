@@ -17,8 +17,8 @@ and pull down upstream changes from time to time.
 cd ~
 mkdir repos
 cd repos
-git clone git@github.com:skilstak/workspace.git
-cd workspace
+git clone git@github.com:skilstak/home-config.git
+cd home-config
 ./setup
 ```
 
@@ -28,6 +28,12 @@ cd workspace
  2. Clone your copy of the repo
  3. Sync your master with upstream [like this](https://help.github.com/articles/syncing-a-fork/)
  4. Commit your synced changes with `save`
+
+# Don't Rename
+
+Unless you really know what you are doing stick with the
+`$HOME/repos/home-config` location since that is coded into the
+`setup` script.
 
 # Dependencies
 
