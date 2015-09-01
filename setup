@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# so we can use `$WORK`, `pubkey` and such
+# so we can use `$CONFIG`, `pubkey` and such
 . ./bashrc
 
 _ssh() {
@@ -35,7 +35,7 @@ _links() {
     if [ -e $target ]; then
       mv $target ${target}.$tstamp
     fi
-    ln -s $WORK/$i $target 
+    ln -fs $CONFIG/$i $target 
   done
 }
 
