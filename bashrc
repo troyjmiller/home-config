@@ -65,6 +65,7 @@ if [ -x /usr/bin/dircolors ]; then
     eval "$(dircolors -b /usr/share/skilstak/dircolors)"
   else
     eval "$(dircolors -b)"
+  fi
 fi
 
 if [ $PLATFORM != 'bsd' ]; then
@@ -108,7 +109,24 @@ fi
 
 #---------------------------- Solarized Prompt ----------------------------
 
-. $HOME/lib/sh/colors.sh
+export c_base03='\033[1;30m'
+export c_base02='\033[0;30m'
+export c_base01='\033[1;32m'
+export c_base00='\033[1;33m'
+export c_base0='\033[1;34m'
+export c_base1='\033[1;36m'
+export c_base2='\033[0;37m'
+export c_base3='\033[1;37m'
+export c_yellow='\033[0;33m'
+export c_orange='\033[1;31m'
+export c_red='\033[0;31m'
+export c_magenta='\033[0;35m'
+export c_violet='\033[1;35m'
+export c_blue='\033[0;34m'
+export c_cyan='\033[0;36m'
+export c_green='\033[0;32m'
+export c_reset='\033[0m'
+export c_clear='\\\033[H\\\033[2J'
 
 alias promptbig='export PS1="\n\[$c_red\]╔ \[$c_green\]\T \d \[${c_orange}\]\u@\h\[$base01\]:\[$c_blue\]\w$gitps1\n\[$c_red\]╚ \[$c_cyan\]\\$ \[$c_reset\]"'
 alias promptmed='export PS1="\[${c_base1}\]\u\[$c_base01\]@\[$c_base00\]\h:\[$c_yellow\]\W\[$c_cyan\]\\$ \[$c_reset\]"'
