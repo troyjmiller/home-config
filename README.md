@@ -49,5 +49,7 @@ to do in class if you don't know):
 * [Node/NPM](http://nodejs.org)
 * [Harp](http://harpjs.com)
 * [Surge](http://surge.sh)
+* [Browser Sync](http://www.browsersync.io/)
 * [Google Chrome](http://google.com/chrome)
 * [Solarized terminal](solarized)
+* [dtach](dtach)
