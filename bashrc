@@ -94,22 +94,11 @@ alias lm='ll |more'        #  Pipe through 'more'
 alias lr='ll -R'           #  Recursive ls.
 alias la='ll -A'           #  Show hidden files.
 
-#-------------------------------- Git --------------------------------
-
-export GITURLS=\
-"$HOME/.giturls":\
-"$HOME/config/giturls":\
-"$HOME/repos/personal/giturls":\
-"$HOME/repos/private/giturls"
-alias gurlpath='echo -e ${GITURLS//:/\\n}'
+alias listens='netstat -tulpn'
+alias ip="ifconfig | perl -ne '/^\s*inet (?:addr)?/ and print'"
 
 alias repos='cd "$HOME/repos"'
-
-gget() {
-  name=`basename $1`
-  git clone git@github.com:$1 $HOME/repos/$name
-  repath
-}
+alias root='sudo su -'
 
 #------------------------------- Web Dev ----------------------------------
 
@@ -119,36 +108,14 @@ fi
 
 #---------------------------- Solarized Prompt ----------------------------
 
-# solarized ansicolors (exporting for grins)
-export c_base03='\033[1;30m'
-export c_base02='\033[0;30m'
-export c_base01='\033[1;32m'
-export c_base00='\033[1;33m'
-export c_base0='\033[1;34m'
-export c_base1='\033[1;36m'
-export c_base2='\033[0;37m'
-export c_base3='\033[1;37m'
-export c_yellow='\033[0;33m'
-export c_orange='\033[1;31m'
-export c_red='\033[0;31m'
-export c_magenta='\033[0;35m'
-export c_violet='\033[1;35m'
-export c_blue='\033[0;34m'
-export c_cyan='\033[0;36m'
-export c_green='\033[0;32m'
-export c_reset='\033[0m'
-export c_clear='\\\033[H\\\033[2J'
+. $HOME/lib/sh/colors.sh
 
 alias promptbig='export PS1="\n\[$c_red\]╔ \[$c_green\]\T \d \[${c_orange}\]\u@\h\[$base01\]:\[$c_blue\]\w$gitps1\n\[$c_red\]╚ \[$c_cyan\]\\$ \[$c_reset\]"'
 alias promptmed='export PS1="\[${c_base1}\]\u\[$c_base01\]@\[$c_base00\]\h:\[$c_yellow\]\W\[$c_cyan\]\\$ \[$c_reset\]"'
 alias promptpwd='export PS1="\[${c_base01}\]\W\[$c_cyan\]\\$ \[$c_reset\]"'
 alias promptnone='export PS1="\[$c_cyan\]\\$ \[$c_reset\]"'
 
-# default
 promptmed
-
-alias listens='netstat -tulpn'
-alias ip="ifconfig | perl -ne '/^\s*inet (?:addr)?/ and print'"
 
 #-------------------------------- Vim-ish ---------------------------------
 
@@ -161,11 +128,6 @@ else
   export EDITOR=vi
 fi
 
-textfiles() {
-  local list=`find . -name "*$**" ! -path '*images*' ! -type d`
-  echo $list
-}
-
 #---------------------------- personalization -----------------------------
 
 # mostly for those that do now want to maintain their own bashrc but
@@ -174,7 +136,3 @@ textfiles() {
 [ -e "$HOME/repos/personal/bashrc" ] && . "$HOME/repos/personal/bashrc" 
 [ -e "$HOME/repos/private/bashrc" ] && . "$HOME/repos/private/bashrc" 
 
-
-alias root='sudo su -'
-alias week="cd $HOME/repos/week"
- 
