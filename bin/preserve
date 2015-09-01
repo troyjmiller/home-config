@@ -1,0 +1,5 @@
+#!/bin/sh
+
+# keeps timestamped copies of stuff
+
+[ -e "$1" ] && mv "$1" "$1"_`date +%Y%m%d%H%M%S`

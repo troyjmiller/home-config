@@ -2,7 +2,6 @@ export WORK=$HOME/repos/workspace
 export SKILSTAK=/usr/share/skilstak
 export TERM=xterm-256color
 
-
 if [ ! $TERM = 'screen' ]; then
   # bail if somehow non-interactive
   [ -z "$PS1" ] && return 2>/dev/null
@@ -59,25 +58,13 @@ repath
 alias path='echo -e ${PATH//:/\\n}'
 alias workspace="cd $WORK"
 
-#--------------------------- Utility Functions ----------------------------
-
-has() {
-  type "$1" > dev/null 2>&1
-  return $?
-}
-
-pcwd() {
-  ls -l /proc/$1 |grep cwd
-}
-
-preserve() {
-    [ -e "$1" ] && mv "$1" "$1"_`date +%Y%m%d%H%M%S`
-}
-
 if [ -x /usr/bin/dircolors ]; then
-  test -r ~/.dircolors \
-    && eval "$(dircolors -b ~/.dircolors)" \
-    || eval "$(dircolors -b)"
+  if [ -r ~/.dircolors ]; then
+    eval "$(dircolors -b ~/.dircolors)"
+  elif [ -r /usr/share/skilstak/dircolors ]; then 
+    eval "$(dircolors -b /usr/share/skilstak/dircolors)"
+  else
+    eval "$(dircolors -b)"
 fi
 
 if [ $PLATFORM != 'bsd' ]; then
