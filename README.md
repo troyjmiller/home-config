@@ -45,6 +45,7 @@ to do in class if you don't know):
 * [git/GitHub](http://github.com)
 * [vim 7.4+](http://www.vim.org)
 * [Python 3+](http://www.python.org)
+* [Go 1.5+](http://www.golang.org)
 * [Java OpenJDK 7+](http://openjdk.java.net)
 * [Node/NPM](http://nodejs.org)
 * [Harp](http://harpjs.com)
