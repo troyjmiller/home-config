@@ -1218,7 +1218,7 @@
 	<key>BlinkText</key>
 	<true/>
 	<key>CommandString</key>
-	<string>exec ssh -p 424 main.skilstak.com</string>
+	<string></string>
 	<key>CursorBlink</key>
 	<true/>
 	<key>CursorColor</key>
