@@ -57,4 +57,4 @@ palette.
 [SSH Chrome extension]: https://chrome.google.com/webstore/detail/secure-shell/pnhechapfaindjhompbnflcldabbghjo
 [Putty Tray]: https://puttytray.goeswhere.com
 [these configuration instructions]: https://github.com/altercation/solarized/tree/master/putty-colors-solarized
-[this profile]: solarized-dark-chrome.json
+[this profile]: https://raw.githubusercontent.com/skilstak/home-config/master/solarized/solarized-dark-chrome.json
