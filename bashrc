@@ -92,7 +92,7 @@ alias todo='note todo'
 
 export PYTHONDONTWRITEBYTECODE=true
 export PYTHONPATH=$HOME/lib/python:$CONFIG/lib/python:$SKILSTAK/lib/python
-export CLASSPATH=./:$HOME/lib/java:$CLASSPATH
+export CLASSPATH=./:$HOME/lib/java:$CONFIG/lib/java:$CLASSPATH
 
 jhome () {
   export JAVA_HOME=`/usr/libexec/java_home $@`
