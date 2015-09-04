@@ -123,6 +123,14 @@ if [ `which jade.js` ]; then
     alias jade=jade.js
 fi
 
+#------------------------------- Bash Completion ----------------------------------
+
+if [ $PLATFORM == bsd ]; then
+  if [ -f $(brew --prefix)/etc/bash_completion ]; then
+    . $(brew --prefix)/etc/bash_completion
+  fi
+fi
+
 #---------------------------- Solarized Prompt ----------------------------
 
 export c_base03='\033[1;30m'
