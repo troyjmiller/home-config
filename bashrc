@@ -92,6 +92,14 @@ alias todo='note todo'
 
 export PYTHONDONTWRITEBYTECODE=true
 export PYTHONPATH=$HOME/lib/python:$CONFIG/lib/python:$SKILSTAK/lib/python
+export CLASSPATH=./:$HOME/lib/java:$CLASSPATH
+
+jhome () {
+  export JAVA_HOME=`/usr/libexec/java_home $@`
+  echo "JAVA_HOME:" $JAVA_HOME
+  echo "java -version:"
+  java -version
+}
 
 alias lx='ls -lXB'         #  Sort by extension.
 alias lk='ls -lSr'         #  Sort by size, biggest last.
