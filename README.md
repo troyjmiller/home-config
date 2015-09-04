@@ -54,3 +54,8 @@ to do in class if you don't know):
 * [Google Chrome](http://google.com/chrome)
 * [Solarized terminal](solarized)
 * [dtach](dtach)
+
+On a Mac you have to install these as well:
+
+* `brew`
+* `brew install bash-completion`

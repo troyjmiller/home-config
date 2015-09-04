@@ -1,5 +1,6 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =3
+let g:netrw_dirhist_cnt =4
 let g:netrw_dirhist_1='/Users/robmuh/repos/usr-share-skilstak/bin'
 let g:netrw_dirhist_2='/Users/robmuh/repos/home-config'
 let g:netrw_dirhist_3='/Users/robmuh/repos/go-1/hello'
+let g:netrw_dirhist_4='/Users/robmuh/repos/colors-java/src/main/java'
