@@ -55,6 +55,14 @@ repath() {
 }
 repath
 
+repo() {
+  if [ -z "$1" ]; then 
+    /bin/ls -1 "$HOME/repos"
+  else
+    cd "$HOME/repos/$1"
+  fi
+}
+
 alias path='echo -e ${PATH//:/\\n}'
 alias config="cd $CONFIG"
 

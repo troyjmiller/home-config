@@ -1,7 +1,0 @@
-#!/bin/sh
-
-if [ -z "$1" ]; then 
-  /bin/ls -1 "$HOME/repos"
-else
-  cd "$HOME/repos/$1"
-fi

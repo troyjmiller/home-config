@@ -1,0 +1,38 @@
+_note() {
+  local list=`note`
+  #echo $list
+  local typed=${COMP_WORDS[COMP_CWORD]}
+  COMPREPLY=( $(compgen -W "$list" -- $typed))
+}
+complete -F _note note
+alias todo='note todo'
+_repo() {
+  local list=`repo`
+  local typed=${COMP_WORDS[COMP_CWORD]}
+  COMPREPLY=( $(compgen -W "$list" -- $typed))
+}
+complete -F _repo repo
+
+_uid() {
+  local users=`cut -d: -f1 /etc/passwd`
+  local typed=${COMP_WORDS[COMP_CWORD]}
+  COMPREPLY=( $(compgen -W "$users" -- $typed))
+}
+complete -F _uid uid
+
+
+
+_uidport() {
+  local users=`cut -d: -f1 /etc/passwd`
+  local typed=${COMP_WORDS[COMP_CWORD]}
+  COMPREPLY=( $(compgen -W "$users" -- $typed))
+}
+complete -F _uidport uidport
+
+
+_ssh() {
+  local list=`perl -ne 'print "$1 " if /\s*Host\s+(\S+)/' ~/.ssh/config`
+  local typed=${COMP_WORDS[COMP_CWORD]}
+  COMPREPLY=( $(compgen -W "$list" -- $typed))
+}
+complete -F _ssh ssh
