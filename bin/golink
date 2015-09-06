@@ -1,0 +1,47 @@
+#!/bin/sh
+
+usage() {
+  echo usage: golink PROJECT GHNAME
+  echo    ex: golink laston skilstak
+}
+
+if [ -z "$1" -o -z "$2" ]; then
+  usage
+  exit 1
+fi
+
+project="$1"
+ghname="$2"
+link="$HOME/repos/$project"
+
+if [ -e "$link" ]; then
+  echo "Link ($link) exists."
+  exit 1
+fi
+
+if [ -z "$GOPATH" ]; then
+  echo "No GOPATH set."
+  exit 1
+fi
+
+npath="$GOPATH/src/github.com/$ghname"
+
+if [ ! -e "$npath" ]; then
+  mkdir -p "$npath"
+  if [ $? -ne 0 ]; then
+    echo "Failed to create missing path $npath"
+    exit 1
+  fi
+fi
+
+ppath="$npath/$project"
+
+if [ ! -e "$ppath" ]; then
+  git clone git@github.com:$ghname/$project $ppath
+  if [ $? -ne 0 ]; then
+    echo "Failed to clone missing github project $ppath"
+    exit 1
+  fi
+fi
+
+ln -s $ppath $link 
