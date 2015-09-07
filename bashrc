@@ -93,7 +93,7 @@ alias goi='go install'
 alias gor='go run main.go'
 
 export PYTHONDONTWRITEBYTECODE=true
-export PYTHONPATH=$HOME/lib/python:$CONFIG/lib/python:$SKILSTAK/lib/python
+export PYTHONPATH=$HOME/lib/python:$CONFIG/lib/python:$SKILSTAK/lib/python:$HOME/repos/storyeng
 export CLASSPATH=./:$HOME/lib/java:$CONFIG/lib/java:$CLASSPATH
 
 jhome () {

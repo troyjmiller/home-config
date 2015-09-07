@@ -17,14 +17,10 @@ dest="$HOME/repos/$project"
 if [ -e "$dest" ]; then
   echo "Destination ($dest) exists."
   exit 1
-fi
-
-ppath="$dest/$project"
-
-if [ ! -e "$ppath" ]; then
-  git clone git@github.com:$ghname/$project $ppath
+else
+  git clone git@github.com:$ghname/$project $dest
   if [ $? -ne 0 ]; then
-    echo "Failed to clone missing github project $ppath"
+    echo "Failed to clone missing github project $dest"
     exit 1
   fi
 fi
