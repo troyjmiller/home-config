@@ -5,22 +5,33 @@ usage() {
   echo    ex: get laston skilstak
 }
 
-if [ -z "$1" -o -z "$2" ]; then
+if [ -z "$1" ]; then
   usage
   exit 1
 fi
 
 project="$1"
 ghname="$2"
+
+if [ -z "$ghname" ]; then
+  ghname=`git config user.github`
+fi
+
+if [ -z "$ghname" ]; then
+  ghname=$USER
+fi
+
 dest="$HOME/repos/$project"
+
+giturl="git@github.com:$ghname/${project}.git"
 
 if [ -e "$dest" ]; then
   echo "Destination ($dest) exists."
   exit 1
 else
-  git clone git@github.com:$ghname/$project $dest
+  git clone $giturl $dest
   if [ $? -ne 0 ]; then
-    echo "Failed to clone missing github project $dest"
+    echo "Failed to clone $giturl"
     exit 1
   fi
 fi
