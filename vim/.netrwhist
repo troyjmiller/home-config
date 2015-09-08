@@ -1,5 +1,5 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =7
+let g:netrw_dirhist_cnt =9
 let g:netrw_dirhist_1='/Users/robmuh/repos/usr-share-skilstak/bin'
 let g:netrw_dirhist_2='/Users/robmuh/repos/home-config'
 let g:netrw_dirhist_3='/Users/robmuh/repos/go-1/hello'
@@ -7,3 +7,5 @@ let g:netrw_dirhist_4='/Users/robmuh/repos/colors-java/src/main/java'
 let g:netrw_dirhist_5='/Users/robmuh/repos/python-1/hello'
 let g:netrw_dirhist_6='/Users/robmuh/go/src/github.com/skilstak/go-bux/bux'
 let g:netrw_dirhist_7='/Users/robmuh/repos/madddrealm/storyeng'
+let g:netrw_dirhist_8='/Users/robmuh/repos/madddrealm/story'
+let g:netrw_dirhist_9='/Users/robmuh/repos/vim-jade'
