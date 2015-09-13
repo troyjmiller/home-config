@@ -89,6 +89,7 @@ alias pyinstall='sudo pip3 install --upgrade .'
 alias runallpy='for i in *.py;do python3 $i; done'
 alias jsonpp='json_pp'
 alias todo='note todo'
+alias grep='grep -i'
 alias goi='go install'
 alias gor='go run main.go'
 

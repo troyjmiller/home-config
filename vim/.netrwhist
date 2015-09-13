@@ -1,2 +1,6 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =0
+let g:netrw_dirhist_cnt =4
+let g:netrw_dirhist_1='/Users/robmuh/go/src/github.com/skilstak/go-1/hello'
+let g:netrw_dirhist_2='/Users/robmuh/go/src/github.com/skilstak/go-1/eightball'
+let g:netrw_dirhist_3='/Users/robmuh/repos/offerings/public'
+let g:netrw_dirhist_4='/Users/robmuh/repos/skilstak.github.io'
