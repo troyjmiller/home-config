@@ -92,6 +92,7 @@ alias todo='note todo'
 alias grep='grep -i'
 alias goi='go install'
 alias gor='go run main.go'
+alias got='go test -v'
 
 export PYTHONDONTWRITEBYTECODE=true
 export PYTHONPATH=$HOME/lib/python:$CONFIG/lib/python:$SKILSTAK/lib/python:$HOME/repos/storyeng
