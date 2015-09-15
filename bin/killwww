@@ -1,6 +1,6 @@
 #!/bin/sh
 
-if [ $UID == 0 ]; then
+if [ $UID -eq 0 ]; then
   echo "Cowardly refusing to kill anything as root" >&2
   exit
 fi
