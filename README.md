@@ -1,6 +1,6 @@
 # SkilStak Home Config Helper
 
-***You don't need this is you are only working from `code.skilstak.io`. If
+***You don't need this is you are only working from `skilstak.sh`. If
 you are setting up your own multi-user Linux environment take a look at
 [`usr-share-skilstak`](http://github.com/skilstak/usr-share-skilstak)
 instead.***

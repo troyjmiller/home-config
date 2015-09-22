@@ -1,6 +1,8 @@
 export CONFIG=$HOME/repos/home-config
 export SKILSTAK=/usr/share/skilstak
 export TERM=xterm-256color
+export SKILSTAKMC=/usr/share/skilstakmc
+export SKILSTAKGO=/usr/share/skilstakgo
 
 if [ ! $TERM = 'screen' ]; then
   # bail if somehow non-interactive
@@ -40,9 +42,11 @@ repath() {
 ./:\
 ./bin:\
 "$HOME/bin":\
+"$GOPATH/bin":\
 "$CONFIG/bin":\
 "$SKILSTAK/bin":\
-"$GOPATH/bin":\
+"$SKILSTAKMC/bin":\
+"$SKILSTAKGO/bin":\
 `repopaths`\
 /usr/games:\
 /usr/local/go/bin:\
