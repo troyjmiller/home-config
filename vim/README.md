@@ -12,6 +12,8 @@ before committing your own `.vim` repo.
 
 When and if you need a fresh copy of a given plugin, you can remove
 it from the `bundles` directory and just redo `:PluginInstall`.
+Then remove its `.git*` stuff so it commits correctly to your own
+repo.
 
 NOTE: `:PluginInstall` will return errors for all for plugins that
 have had their `.git*` stuff removed obviously because it cannot
