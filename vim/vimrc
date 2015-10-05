@@ -19,6 +19,8 @@ Bundle 'marijnh/tern_for_vim'
 Plugin 'pangloss/vim-javascript'
 Plugin 'fatih/vim-go'
 Plugin 'othree/html5.vim'
+Plugin 'elzr/vim-json'
+
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -33,6 +35,9 @@ filetype plugin indent on    " required
 "
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
+
+
+let g:vim_json_syntax_conceal=0
 
 syntax on
 filetype plugin on
