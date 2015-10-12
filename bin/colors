@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-import colors as c
+import skilstak.colors as c
 
 python = c.o+'import '+c.b1+'colors '+c.g+'as '+c.b1+'c'+c.b3 
 #form = c.b3+'┃ '+'{1}'+'{2:7} '+c.b3+'┃{0} {3:21}'+c.b3+' ┃ {0}{4:14}'+c.b3+' ┃ {0} {5:7}'+c.b3+'  ┃ {0}{6:14}'+c.b3+'┃'+c.x
