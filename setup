@@ -3,7 +3,7 @@
 # so we can use `$CONFIG`, `pubkey` and such
 . ./bashrc
 
-tstamp=`tstamp`
+tstamp=`bin/tstamp`
 
 _ssh() {
   if [ ! -e "$HOME/.ssh/id_rsa.pub" ]; then
