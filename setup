@@ -3,6 +3,8 @@
 # so we can use `$CONFIG`, `pubkey` and such
 . ./bashrc
 
+tstamp=`tstamp`
+
 _ssh() {
   if [ ! -e "$HOME/.ssh/id_rsa.pub" ]; then
     echo "Looks like you don't have any SSH keys yet. Wanna create them now?"
@@ -36,6 +38,12 @@ _links() {
     fi
     ln -fs $CONFIG/$i $target 
   done
+
+  # vim 7.3 (raspi) does not have a 2nd user rc
+  if [ -e "$HOME/.vimrc" ]; then
+    mv "$HOME/.vimrc" "$HOME/.vimrc.$tstamp"
+  fi
+  ln -fs $CONFIG/vim/vimrc "$HOME/.vimrc"
 }
 
 _git(){
