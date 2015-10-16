@@ -17,4 +17,6 @@ repo.
 
 NOTE: `:PluginInstall` will return errors for all for plugins that
 have had their `.git*` stuff removed obviously because it cannot
-`git clone` them, but this is not a bad thing in this case.
+`git clone` them, but this is not a bad thing in this case. If and
+when you need to update them `rm` the plugins from `bundle` and 
+redo `:PluginInstall` to get latest versions.
