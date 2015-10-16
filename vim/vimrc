@@ -21,7 +21,7 @@ Plugin 'fatih/vim-go'
 Plugin 'othree/html5.vim'
 Plugin 'elzr/vim-json'
 Plugin 'davidhalter/jedi-vim'
-
+Plugin 'junegunn/goyo.vim'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -37,6 +37,30 @@ filetype plugin indent on    " required
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
 
+let g:goyo_width=70
+let g:goyo_height=22
+let  g:goyo_linenr=0
+
+function! s:goyo_enter()
+  let b:quitting = 0
+  let b:quitting_bang = 0
+  autocmd QuitPre <buffer> let b:quitting = 1
+  cabbrev <buffer> q! let b:quitting_bang = 1 <bar> q!
+endfunction
+
+function! s:goyo_leave()
+  " Quit Vim if this is the only remaining buffer
+  if b:quitting && len(filter(range(1, bufnr('$')), 'buflisted(v:val)')) == 1
+    if b:quitting_bang
+      qa!
+    else
+      qa
+    endif
+  endif
+endfunction
+
+autocmd User GoyoEnter call <SID>goyo_enter()
+autocmd User GoyoLeave call <SID>goyo_leave()
 
 let g:vim_json_syntax_conceal=0
 
@@ -79,6 +103,7 @@ set textwidth=76
 set formatoptions=qrn1
 set nobackup
 set noswapfile
+set nowritebackup
 
 " Keep in mind that if you have already solarized your gnome-terminal
 " you really don't need any of this
@@ -144,9 +169,10 @@ autocmd BufNewFile,BufRead *.crontab set ft=crontab
 
 if has("autocmd")
   au FileType markdown,txt,html,jade set spell
+  au FileType markdown,txt Goyo 70
   au FileType yaml,javascript,html,json,jade,stylus setl tabstop=2 shiftwidth=2 softtabstop=2
   au FileType go setl tabstop=8 shiftwidth=8 softtabstop=8
-  au FileType java setl tabstop=4 shiftwidth=4 softtabstop=4
+  au FileType java,python setl tabstop=4 shiftwidth=4 softtabstop=4
 endif
 
 hi SpellBad ctermfg=015 ctermbg=003 cterm=none guifg=#FFFFFF guibg=#FF0000 gui=none
