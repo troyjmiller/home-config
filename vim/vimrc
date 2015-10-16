@@ -98,7 +98,7 @@ set smartcase
 set incsearch
 set showmatch
 set nowrap
-set textwidth=76
+set textwidth=70
 set formatoptions=qrn1
 set nobackup
 set noswapfile
