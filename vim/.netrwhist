@@ -1,0 +1,8 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =6
+let g:netrw_dirhist_1='/Users/robmuh/go/src/github.com/skilstak/go/sks/sks'
+let g:netrw_dirhist_2='/Users/robmuh/go/src/github.com/skilstak/go/bux/bux'
+let g:netrw_dirhist_3='/Users/robmuh/repos/usr-share-skilstak/lib/node_modules/skilstak-colors'
+let g:netrw_dirhist_4='/Users/robmuh/repos/fundamentals/hello/js/hello'
+let g:netrw_dirhist_5='/Users/robmuh/repos/fundamentals/hello/py/bonus'
+let g:netrw_dirhist_6='/Users/robmuh/repos/fundamentals/hello/js/hello'
