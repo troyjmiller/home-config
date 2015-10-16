@@ -27,7 +27,6 @@ _links() {
   bashrc
   vim
   dircolors
-  gitconfig
   "
 
   for i in $links; do 
@@ -40,11 +39,14 @@ _links() {
 }
 
 _git(){
-  echo
-  echo "Don't forget to change your settings in gitconfig:"
-  echo
-  cat gitconfig
-  echo
+  if [ ! -e "$HOME/.gitconfig" ]; then
+    cp gitconfig "$HOME/.gitconfig"
+    echo
+    echo "Don't forget to change your settings in $HOME/.gitconfig:"
+    echo
+    cat "$HOME/.gitconfig"
+    echo
+  fi
 }
 
 #####################################################
