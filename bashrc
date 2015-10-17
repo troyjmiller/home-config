@@ -101,6 +101,7 @@ alias got='go test -v'
 export PYTHONDONTWRITEBYTECODE=true
 export PYTHONPATH=$HOME/lib/python:$CONFIG/lib/python:$SKILSTAK/lib/python:$HOME/repos/storyeng
 export CLASSPATH=./:$HOME/lib/java:$CONFIG/lib/java:$CLASSPATH
+export FUNDATA=$HOME/repos/fundamentals/data
 
 jhome () {
   export JAVA_HOME=`/usr/libexec/java_home $@`

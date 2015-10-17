@@ -50,3 +50,6 @@ stylesheet
 YAML
 TOML
 INI
+WebGL
+WebAudio
+DirectX

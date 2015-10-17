@@ -37,10 +37,11 @@ Unless you really know what you are doing stick with the
 
 # Dependencies
 
-Eventually `setup` may including looking up dependencies and prompting
-for installing them (packages, commands, apps). For now you will
-have to ensure you have the following installed, (which you learn
-to do in class if you don't know):
+Dependencies is a strong word. This is stuff you just need at
+SkilStak. Eventually `setup` may including looking up dependencies
+and prompting for installing them (packages, commands, apps). For
+now you will have to ensure you have the following installed, (which
+you learn to do in class if you don't know):
 
 * [git/GitHub](http://github.com)
 * [vim 7.4+](http://www.vim.org) (7.3 will work)
@@ -54,6 +55,7 @@ to do in class if you don't know):
 * [Google Chrome](http://google.com/chrome)
 * [Solarized terminal](solarized)
 * [dtach](dtach)
+* [SQLite](http://www.sqlite.org)
 
 On a Mac you have to install these as well:
 
