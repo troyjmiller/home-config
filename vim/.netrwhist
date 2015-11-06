@@ -1,6 +1,5 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =4
-let g:netrw_dirhist_1='/Users/robmuh/repos/flappy/public'
-let g:netrw_dirhist_2='/Users/robmuh/repos/skilstak.io/public'
-let g:netrw_dirhist_3='/Users/robmuh/repos/fundamentals/data/eightball/ascii/responses'
-let g:netrw_dirhist_4='/Users/robmuh/repos/skilstak.io/.git'
+let g:netrw_dirhist_cnt =3
+let g:netrw_dirhist_1='/Users/robmuh/repos/flappy/public/assets'
+let g:netrw_dirhist_2='/Users/robmuh/repos/hello/java/src/main/java'
+let g:netrw_dirhist_3='/Users/robmuh/repos/hello/java/build'
