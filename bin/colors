@@ -25,6 +25,7 @@ _colors = [
     [c.b1, 'RESET',   'c.reset   c.x   c.X', '$c_reset', ' ', '\\033[0m'],
     [c.b1, 'CLEAR',   'c.clear   c.cl  c.CL', '$c_clear', ' ', '\\033[H\\033[2J'],
     [c.rc(), 'RANDOM',  'c.random() c.rc()', '`random_color`', ' ', ' '],
+    [c.multi('MULTI'),'', 'c.multi("MULTI")', '', '', ' ', ' '],
 ]
 
 print(c.cl,end='')
