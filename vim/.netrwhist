@@ -1,8 +1,3 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =6
-let g:netrw_dirhist_1='/Users/robmuh/repos/flappy/public/assets'
-let g:netrw_dirhist_2='/Users/robmuh/repos/hello/java/src/main/java'
-let g:netrw_dirhist_3='/Users/robmuh/repos/hello/java/build'
-let g:netrw_dirhist_4='/Users/robmuh/repos/hello/java/src'
-let g:netrw_dirhist_5='/Users/robmuh/repos/usr-share-skilstak/lib/node_modules/skilstak-colors'
-let g:netrw_dirhist_6='/Users/robmuh/repos/hello/go/src/simple'
+let g:netrw_dirhist_cnt =1
+let g:netrw_dirhist_1='/Users/robmuh/repos/eightball/data/ascii/responses'

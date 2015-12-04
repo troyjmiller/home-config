@@ -11,6 +11,8 @@ call vundle#begin()
 " (Don't forget you may need to make these submodules if under git)
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-ragtag'
+Plugin 'tpope/vim-surround'
 Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'digitaltoad/vim-jade'
@@ -23,6 +25,7 @@ Plugin 'elzr/vim-json'
 Plugin 'junegunn/goyo.vim'
 Plugin 'cespare/vim-toml'
 Plugin 'tfnico/vim-gradle'
+Plugin 'keith/swift.vim'
 
 call vundle#end()            " required
 filetype plugin indent on    " required

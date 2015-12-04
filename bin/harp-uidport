@@ -1,2 +1,3 @@
 #!/bin/bash
-exec harp server --port=8`uidport`
+#exec harp server --port=8`uidport`
+exec harp server --port=80
