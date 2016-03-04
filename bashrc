@@ -133,6 +133,10 @@ if [ `which jade.js` ]; then
     alias jade=jade.js
 fi
 
+if [ `which hugo`]; then
+  alias hugoserve='hugo server >/dev/null &'
+fi
+
 #------------------------------- Bash Completion ----------------------------------
 
 if [ $PLATFORM == bsd ]; then

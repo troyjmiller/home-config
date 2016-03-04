@@ -1,3 +1,11 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =1
+let g:netrw_dirhist_cnt =9
 let g:netrw_dirhist_1='/Users/robmuh/repos/eightball/data/ascii/responses'
+let g:netrw_dirhist_2='/Users/robmuh/repos/hello/swift/hello'
+let g:netrw_dirhist_3='/Users/robmuh/repos/eightball/data/ascii/responses'
+let g:netrw_dirhist_4='/Users/robmuh/repos/winter/img'
+let g:netrw_dirhist_5='/Users/robmuh/repos/quizapp/www'
+let g:netrw_dirhist_6='/Users/robmuh/repos/phaser-js-boilerplate/www/assets'
+let g:netrw_dirhist_7='/Users/robmuh/repos/dogedodge/www'
+let g:netrw_dirhist_8='/Users/robmuh/repos/summer/content'
+let g:netrw_dirhist_9='/Users/robmuh/repos/new.skilstak.io/layouts'

@@ -4,5 +4,3 @@
 	email = rob@skilstak.com
 	name = Rob Muhlestein
 	github = robmuh
-[url "git@github.com:"]
-	insteadOf = https://github.com/
