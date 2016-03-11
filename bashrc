@@ -135,6 +135,7 @@ fi
 
 if [ `which hugo` ]; then
   alias hugoserve='hugo server >/dev/null &'
+  alias hugo='hugo --editor=vi'
 fi
 
 #------------------------------- Bash Completion ----------------------------------
