@@ -1,0 +1,22 @@
+#!/bin/sh
+
+dir=$1
+
+if [ -z "$dir" ]
+then
+  if [ -d www ]; then
+    dir=www
+  elif [ -d public ]; then
+    dir=public
+  elif [ -d static ]; then
+    dir=static
+  elif [ -d site ]; then
+    dir=site
+  elif [ -d gh-pages ];then
+    dir=gh-pages
+  else
+    echo "usage: ghp [DIR] (DEFAULT: www, public, static, site, gh-pages)"
+    exit 1
+  fi
+fi
+git subtree push --prefix "$dir" origin gh-pages
