@@ -162,6 +162,9 @@ map <F4> :set list!<CR>
 map <F5> :set cursorline!<CR>
 map <F7> :set spell!<CR>
 
+" :save command (needs the save shell script installed)
+command Save :!save
+
 " modula what?
 autocmd BufNewFile,BufRead *.md set filetype=markdown
 
@@ -171,9 +174,13 @@ autocmd BufNewFile,BufRead *.json set ft=json
 " crontab
 autocmd BufNewFile,BufRead *.crontab set ft=crontab
 
+let g:goyo_height="100%"
+let g:goyo_width=80
+let g:goyo_liner=71
+
 if has("autocmd")
   au FileType markdown,txt,html,jade set spell
-  au FileType markdown,txt Goyo 71
+  au FileType markdown,txt Goyo 80
   au FileType yaml,javascript,html,json,jade,stylus setl tabstop=2 shiftwidth=2 softtabstop=2
   au FileType go setl tabstop=8 shiftwidth=8 softtabstop=8
   au FileType java,python setl tabstop=4 shiftwidth=4 softtabstop=4

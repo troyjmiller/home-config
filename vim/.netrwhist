@@ -1,2 +1,8 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =0
+let g:netrw_dirhist_cnt =6
+let g:netrw_dirhist_1='/Users/robmuh/repos/cornelius.skilstak.io/themes/skilstak/layouts/partials/types/menu'
+let g:netrw_dirhist_2='/Users/robmuh/repos/fadb/sample'
+let g:netrw_dirhist_3='/Users/robmuh/repos/fadb/sample/Course/_proto'
+let g:netrw_dirhist_4='/Users/robmuh/repos/fadb/examples/school'
+let g:netrw_dirhist_5='/Users/robmuh/repos/fadb/examples/school/Course'
+let g:netrw_dirhist_6='/Users/robmuh/repos/home-config/vim/bundle/goyo.vim'
