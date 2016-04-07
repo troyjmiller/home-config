@@ -163,7 +163,7 @@ map <F5> :set cursorline!<CR>
 map <F7> :set spell!<CR>
 
 " :save command (needs the save shell script installed)
-command Save :!save
+command Save :! exec save
 
 " modula what?
 autocmd BufNewFile,BufRead *.md set filetype=markdown
