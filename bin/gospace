@@ -1,0 +1,6 @@
+#!/bin/sh
+
+mkdir src pkg bin
+echo "# source me don't run me" >> setup
+echo export GOPATH=`pwd`:'$GOPATH' >> setup
+echo export PATH='$GOPATH/bin:$PATH' >> setup
