@@ -162,7 +162,10 @@ map <F4> :set list!<CR>
 map <F5> :set cursorline!<CR>
 map <F7> :set spell!<CR>
 
-" :Save command (needs the save shell script installed)
+" :Now command, (needs a now script/cmd of some kind)
+command Now :! exec now
+
+" :Save command (needs a save script/cmd installed)
 command Save :! exec save
 
 " modula what?
