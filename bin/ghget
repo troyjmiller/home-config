@@ -31,7 +31,14 @@ if [ -e "$dest" ]; then
 else
   git clone $giturl $dest
   if [ $? -ne 0 ]; then
-    echo "Failed to clone $giturl"
-    exit 1
+    failed=$giturl
+    ghname=skilstak
+    giturl="git@github.com:$ghname/${project}.git"
+    echo "Failed to clone $failed, attempting $giturl"
+    git clone $giturl $dest
+    if [ $? -ne 0 ]; then
+      echo "Failed to clone $giturl"
+      exit 1
+    fi
   fi
 fi

@@ -163,7 +163,11 @@ map <F5> :set cursorline!<CR>
 map <F7> :set spell!<CR>
 
 " :Now command, (needs a now script/cmd of some kind)
-command Now :! exec now
+function! GetNow()
+  let result = substitute(system('now'), '[\]\|[[:cntrl:]]', '', 'g')
+  call setline(line('.'), getline('.') . result)
+endfunction
+command Now :call GetNow()<CR>
 
 " :Save command (needs a save script/cmd installed)
 command Save :! exec save
