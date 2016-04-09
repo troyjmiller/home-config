@@ -1,3 +1,3 @@
 #!/bin/sh
 
-find . -exec grep --color "$1" {} /dev/null 2>/dev/null \;
+find . -exec grep -i --color "$1" {} /dev/null 2>/dev/null \;
