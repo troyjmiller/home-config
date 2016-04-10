@@ -170,10 +170,11 @@ endfunction
 command Now :call GetNow()<CR>
 
 " :Save command (needs a save script/cmd installed)
-function! CallSave()
-  system('save')
+function! SaveIt()
+  execute "w"
+  execute "!exec save"
 endfunction
-command Save :system('save')
+command Save :call SaveIt()
 
 " modula what?
 autocmd BufNewFile,BufRead *.md set filetype=markdown
