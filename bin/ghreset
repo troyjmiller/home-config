@@ -1,0 +1,12 @@
+#!/bin/sh
+
+# This is extremely dangerous, only use if you know what you are doing. 
+
+mv .git /tmp/gitreset$$
+url=`grep url /tmp/gitreset$$/config|awk '{print $3}'`
+echo $url
+git init
+git add -A .
+git commit -m "Initial commit"
+git remote add origin $url
+git push -u --force origin master
