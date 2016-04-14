@@ -102,7 +102,7 @@ set ignorecase
 set smartcase
 set incsearch
 set showmatch
-set nowrap
+set wrap
 set textwidth=70
 set formatoptions=qrn1
 set nobackup
@@ -191,7 +191,7 @@ let g:goyo_liner=71
 
 if has("autocmd")
   au FileType markdown,txt,html,jade set spell
-  au FileType markdown,txt Goyo 80
+  "au FileType markdown,txt Goyo 80
   au FileType yaml,javascript,html,json,jade,stylus setl tabstop=2 shiftwidth=2 softtabstop=2
   au FileType go setl tabstop=8 shiftwidth=8 softtabstop=8
   au FileType java,python setl tabstop=4 shiftwidth=4 softtabstop=4
@@ -229,4 +229,9 @@ let g:go_highlight_methods = 1
 let g:go_highlight_structs = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
+
+" remember the last position in a file
+if has("autocmd")
+  au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+endif
 
