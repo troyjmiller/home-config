@@ -1,0 +1,10 @@
+#!/usr/bin/env python3
+
+import math
+
+text = input()
+length = len(text)
+total = 70 - 2
+dashes = math.floor((total - length) / 2) * '-'
+
+print('#' + dashes + ' ' + text + ' ' + dashes)
