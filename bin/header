@@ -8,3 +8,4 @@ total = 70 - 2
 dashes = math.floor((total - length) / 2) * '-'
 
 print('#' + dashes + ' ' + text + ' ' + dashes)
+print()
