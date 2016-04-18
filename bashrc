@@ -33,7 +33,8 @@ set bell-style none
 repopaths() {
   local repopath=`find $HOME/repos -maxdepth 1 -type d -print0 2>/dev/null| tr '\0' ':'i`
   local repobinpath=`find $HOME/repos -maxdepth 2 -type d -name 'bin' -print0 2>/dev/null| tr '\0' ':'`
-  echo "$repopath$repobinpath"
+  local repo_binpath=`find $HOME/repos -maxdepth 2 -type d -name 'bin' -print0 2>/dev/null| tr '\0' ':'`
+  echo "$repopath$repobinpath$repo_binpath"
 }
 
 repath() {
