@@ -1,4 +1,11 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =2
+let g:netrw_dirhist_cnt =9
 let g:netrw_dirhist_1='/Users/robmuh/go/src/github.com/fadb/go-fadb/cmd/fadb'
 let g:netrw_dirhist_2='/Users/robmuh/repos/skilstak.github.io/data/Prototype/Format/Camp'
+let g:netrw_dirhist_3='/Users/robmuh/repos/skilstak.github.io/_data'
+let g:netrw_dirhist_4='/Users/robmuh/repos/skilstak.github.io/_data/winter'
+let g:netrw_dirhist_5='/Users/robmuh/repos/skilstak.github.io/_data/persons/aidanm'
+let g:netrw_dirhist_6='/Users/robmuh/repos/skilstak.github.io/_data/persons/cal'
+let g:netrw_dirhist_7='/Users/robmuh/repos/skilstak.github.io/_data/fall/fripro'
+let g:netrw_dirhist_8='/Users/robmuh/repos/skilstak.github.io/_data/summer/mceng'
+let g:netrw_dirhist_9='/Users/robmuh/repos/skilstak.github.io/_data'

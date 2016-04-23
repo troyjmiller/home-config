@@ -67,6 +67,10 @@ repo() {
   fi
 }
 
+gorepo() {
+  repo go-$1
+}
+
 alias path='echo -e ${PATH//:/\\n}'
 alias config="cd $CONFIG"
 
